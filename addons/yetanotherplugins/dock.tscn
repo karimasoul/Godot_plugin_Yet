@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2p0tgh2ug1kw"]
+
+[ext_resource type="Script" uid="uid://dvt7gva8igsnu" path="res://addons/yetanotherplugins/dock.gd" id="1_ex2rw"]
+
+[node name="Dock" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ex2rw")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Afficher / Cacher HBoxContainer"

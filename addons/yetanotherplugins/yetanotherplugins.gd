@@ -1,22 +1,18 @@
 @tool
 extends EditorPlugin
 
+var dock_instance: Control
 
-func _enable_plugin() -> void:
-	# Add autoloads here.
-	pass
+func _enter_tree():
+	var dock_scene = preload("res://addons/yetanotherplugins/dock.tscn")
+	dock_instance = dock_scene.instantiate()
 
+	
+	dock_instance.editor_interface = get_editor_interface()
 
-func _disable_plugin() -> void:
-	# Remove autoloads here.
-	pass
+	add_control_to_dock(DOCK_SLOT_RIGHT_BL, dock_instance)
 
-
-func _enter_tree() -> void:
-	# Initialization of the plugin goes here.
-	pass
-
-
-func _exit_tree() -> void:
-	# Clean-up of the plugin goes here.
-	pass
+func _exit_tree():
+	if dock_instance:
+		remove_control_from_docks(dock_instance)
+		dock_instance = null
