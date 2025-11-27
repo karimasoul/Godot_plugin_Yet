@@ -14,4 +14,4 @@ offset_bottom = 40.0
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Afficher / Cacher HBoxContainer"
+text = "Afficher"

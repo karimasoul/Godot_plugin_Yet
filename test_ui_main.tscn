@@ -1,0 +1,243 @@
+[gd_scene load_steps=11 format=3 uid="uid://lesnexvedow7"]
+
+[ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_tg7x6"]
+[ext_resource type="Texture2D" uid="uid://dw20dsaki6s7f" path="res://assets/cross.png" id="2_w0cia"]
+[ext_resource type="Texture2D" uid="uid://bfklk1cgjbyp7" path="res://assets/soundOn.png" id="3_w0cia"]
+[ext_resource type="Texture2D" uid="uid://cqgchlycsf2it" path="res://assets/soundOff.png" id="4_ex6w0"]
+[ext_resource type="Texture2D" uid="uid://dkvac1e8nrk6v" path="res://assets/window.png" id="4_naa0o"]
+[ext_resource type="Texture2D" uid="uid://b5c1tlxw3b63m" path="res://assets/leftTriangle.png" id="6_naqm7"]
+[ext_resource type="Texture2D" uid="uid://b04rvmxmm3un3" path="res://assets/rightTriangle.png" id="7_jsbbb"]
+[ext_resource type="Texture2D" uid="uid://cymv0wqjex3j7" path="res://assets/vertSync.png" id="9_ewjm7"]
+
+[sub_resource type="Gradient" id="Gradient_2gtlu"]
+colors = PackedColorArray(0, 0, 0, 1, 0.8431839, 0.8431839, 0.84318376, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w0cia"]
+gradient = SubResource("Gradient_2gtlu")
+
+[node name="TestUiMain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tg7x6")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_w0cia")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="OverallBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UnpauseBtn" type="TextureButton" parent="OverallBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("2_w0cia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="OptionsBox" type="VBoxContainer" parent="OverallBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VolumeBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/VolumeBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SoundButton" type="TextureButton" parent="OverallBox/OptionsBox/VolumeBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_w0cia")
+texture_pressed = ExtResource("4_ex6w0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VolumeLabel" type="Label" parent="OverallBox/OptionsBox/VolumeBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Volume :"
+vertical_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="OverallBox/OptionsBox/VolumeBox"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+size_flags_vertical = 4
+step = 10.0
+value = 100.0
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/VolumeBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WindowBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WindowButton" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("4_naa0o")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WindowLabel" type="Label" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Window :"
+vertical_alignment = 1
+
+[node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("6_naqm7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WindowLabel2" type="Label" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "windowed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("7_jsbbb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResolutionBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResolutionButton" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("4_naa0o")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ResolutionLabel" type="Label" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Resolution :"
+vertical_alignment = 1
+
+[node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("6_naqm7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ResolutionLabel2" type="Label" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1920x1080"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("7_jsbbb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VerticalSyncBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VertSyncButton" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("9_ewjm7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VertSyncLabel" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Vertical Sync :"
+vertical_alignment = 1
+
+[node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("6_naqm7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VertSyncLabel2" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "on"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("7_jsbbb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="OverallBox/UnpauseBtn" to="." method="_on_unpause_btn_pressed"]
+[connection signal="toggled" from="OverallBox/OptionsBox/VolumeBox/SoundButton" to="." method="_on_sound_button_toggled"]
+[connection signal="value_changed" from="OverallBox/OptionsBox/VolumeBox/SoundSlider" to="." method="_on_sound_slider_value_changed"]
