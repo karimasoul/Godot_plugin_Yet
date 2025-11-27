@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://lesnexvedow7"]
+[gd_scene load_steps=14 format=3 uid="uid://lesnexvedow7"]
 
 [ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_tg7x6"]
 [ext_resource type="Texture2D" uid="uid://dw20dsaki6s7f" path="res://assets/cross.png" id="2_w0cia"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dkvac1e8nrk6v" path="res://assets/window.png" id="4_naa0o"]
 [ext_resource type="Texture2D" uid="uid://b5c1tlxw3b63m" path="res://assets/leftTriangle.png" id="6_naqm7"]
 [ext_resource type="Texture2D" uid="uid://b04rvmxmm3un3" path="res://assets/rightTriangle.png" id="7_jsbbb"]
+[ext_resource type="Script" uid="uid://dq7owwp4wqekt" path="res://addons/yetanotherplugins/ScriptsScene/window_label_script.gd" id="7_naqm7"]
+[ext_resource type="Script" uid="uid://buyakxm2gjf3u" path="res://addons/yetanotherplugins/ScriptsScene/resolution_label_script.gd" id="8_ex6w0"]
 [ext_resource type="Texture2D" uid="uid://cymv0wqjex3j7" path="res://assets/vertSync.png" id="9_ewjm7"]
+[ext_resource type="Script" uid="uid://bs86pgyg0tbbf" path="res://addons/yetanotherplugins/ScriptsScene/vert_sync_label_script.gd" id="11_jsbbb"]
 
 [sub_resource type="Gradient" id="Gradient_2gtlu"]
 colors = PackedColorArray(0, 0, 0, 1, 0.8431839, 0.8431839, 0.84318376, 1)
@@ -128,6 +131,7 @@ theme_override_font_sizes/font_size = 30
 text = "windowed"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("7_naqm7")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
 custom_minimum_size = Vector2(30, 30)
@@ -177,6 +181,7 @@ theme_override_font_sizes/font_size = 30
 text = "1920x1080"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("8_ex6w0")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
 custom_minimum_size = Vector2(30, 30)
@@ -226,6 +231,7 @@ theme_override_font_sizes/font_size = 30
 text = "on"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("11_jsbbb")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 custom_minimum_size = Vector2(30, 30)
@@ -241,3 +247,9 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="OverallBox/UnpauseBtn" to="." method="_on_unpause_btn_pressed"]
 [connection signal="toggled" from="OverallBox/OptionsBox/VolumeBox/SoundButton" to="." method="_on_sound_button_toggled"]
 [connection signal="value_changed" from="OverallBox/OptionsBox/VolumeBox/SoundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/WindowBox/Left" to="OverallBox/OptionsBox/WindowBox/WindowLabel2" method="_on_left_pressed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/WindowBox/Right" to="OverallBox/OptionsBox/WindowBox/WindowLabel2" method="_on_right_pressed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/ResolutionBox/Left" to="OverallBox/OptionsBox/ResolutionBox/ResolutionLabel2" method="_on_left_pressed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/ResolutionBox/Right" to="OverallBox/OptionsBox/ResolutionBox/ResolutionLabel2" method="_on_right_pressed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/VerticalSyncBox/Left" to="OverallBox/OptionsBox/VerticalSyncBox/VertSyncLabel2" method="_on_left_pressed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/VerticalSyncBox/Right" to="OverallBox/OptionsBox/VerticalSyncBox/VertSyncLabel2" method="_on_right_pressed"]
