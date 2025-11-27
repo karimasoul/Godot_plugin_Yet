@@ -1,15 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://lesnexvedow7"]
+[gd_scene load_steps=16 format=3 uid="uid://lesnexvedow7"]
 
 [ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_tg7x6"]
-[ext_resource type="Texture2D" uid="uid://dw20dsaki6s7f" path="res://assets/cross.png" id="2_w0cia"]
-[ext_resource type="Texture2D" uid="uid://bfklk1cgjbyp7" path="res://assets/soundOn.png" id="3_w0cia"]
-[ext_resource type="Texture2D" uid="uid://cqgchlycsf2it" path="res://assets/soundOff.png" id="4_ex6w0"]
-[ext_resource type="Texture2D" uid="uid://dkvac1e8nrk6v" path="res://assets/window.png" id="4_naa0o"]
+[ext_resource type="Texture2D" uid="uid://cdsk0c3kahecj" path="res://assets/cross2.png" id="2_ir8c6"]
+[ext_resource type="Texture2D" uid="uid://cesf0jgrx67tr" path="res://assets/SoundOnn.png" id="3_jsbbb"]
+[ext_resource type="Texture2D" uid="uid://8vhla3kfhvkj" path="res://assets/SoundOfff.png" id="4_ir8c6"]
+[ext_resource type="Texture2D" uid="uid://c5mn6h4eolpwr" path="res://assets/window2.png" id="5_ewjm7"]
+[ext_resource type="Texture2D" uid="uid://ba3knhf5v0kam" path="res://assets/triangleRight.png" id="6_ewjm7"]
 [ext_resource type="Texture2D" uid="uid://b5c1tlxw3b63m" path="res://assets/leftTriangle.png" id="6_naqm7"]
 [ext_resource type="Texture2D" uid="uid://b04rvmxmm3un3" path="res://assets/rightTriangle.png" id="7_jsbbb"]
 [ext_resource type="Script" uid="uid://dq7owwp4wqekt" path="res://addons/yetanotherplugins/ScriptsScene/window_label_script.gd" id="7_naqm7"]
 [ext_resource type="Script" uid="uid://buyakxm2gjf3u" path="res://addons/yetanotherplugins/ScriptsScene/resolution_label_script.gd" id="8_ex6w0"]
-[ext_resource type="Texture2D" uid="uid://cymv0wqjex3j7" path="res://assets/vertSync.png" id="9_ewjm7"]
+[ext_resource type="Texture2D" uid="uid://n4ffjnrpumt6" path="res://assets/screen.png" id="9_ih3f1"]
+[ext_resource type="Texture2D" uid="uid://cjo7l8oj1hbvb" path="res://assets/vert.png" id="11_iwhit"]
 [ext_resource type="Script" uid="uid://bs86pgyg0tbbf" path="res://addons/yetanotherplugins/ScriptsScene/vert_sync_label_script.gd" id="11_jsbbb"]
 
 [sub_resource type="Gradient" id="Gradient_2gtlu"]
@@ -50,7 +52,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 0
-texture_normal = ExtResource("2_w0cia")
+texture_normal = ExtResource("2_ir8c6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -70,8 +72,8 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("3_w0cia")
-texture_pressed = ExtResource("4_ex6w0")
+texture_normal = ExtResource("3_jsbbb")
+texture_pressed = ExtResource("4_ir8c6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -104,7 +106,7 @@ size_flags_horizontal = 3
 [node name="WindowButton" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("4_naa0o")
+texture_normal = ExtResource("5_ewjm7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -119,7 +121,7 @@ vertical_alignment = 1
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_naqm7")
+texture_normal = ExtResource("6_ewjm7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -136,7 +138,7 @@ script = ExtResource("7_naqm7")
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("7_jsbbb")
+texture_normal = ExtResource("6_ewjm7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -154,7 +156,7 @@ size_flags_horizontal = 3
 [node name="ResolutionButton" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("4_naa0o")
+texture_normal = ExtResource("9_ih3f1")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -204,7 +206,7 @@ size_flags_horizontal = 3
 [node name="VertSyncButton" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("9_ewjm7")
+texture_normal = ExtResource("11_iwhit")
 ignore_texture_size = true
 stretch_mode = 5
 
