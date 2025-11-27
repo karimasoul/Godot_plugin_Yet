@@ -11,7 +11,39 @@ script = ExtResource("1_ex2rw")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(1.08, 1)
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer"]
 layout_mode = 2
-text = "Afficher"
+text = "Volume"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 67.0
+offset_bottom = 66.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Window"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 70.0
+offset_right = 71.0
+offset_bottom = 101.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer3"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 106.0
+offset_right = 71.0
+offset_bottom = 137.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer4"]
+layout_mode = 2
+text = "Vertical
+"
