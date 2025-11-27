@@ -1,24 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://lesnexvedow7"]
+[gd_scene load_steps=14 format=3 uid="uid://lesnexvedow7"]
 
 [ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_tg7x6"]
+[ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://assets/91657.jpg" id="2_ewjm7"]
 [ext_resource type="Texture2D" uid="uid://cdsk0c3kahecj" path="res://assets/cross2.png" id="2_ir8c6"]
 [ext_resource type="Texture2D" uid="uid://cesf0jgrx67tr" path="res://assets/SoundOnn.png" id="3_jsbbb"]
 [ext_resource type="Texture2D" uid="uid://8vhla3kfhvkj" path="res://assets/SoundOfff.png" id="4_ir8c6"]
 [ext_resource type="Texture2D" uid="uid://c5mn6h4eolpwr" path="res://assets/window2.png" id="5_ewjm7"]
 [ext_resource type="Texture2D" uid="uid://ba3knhf5v0kam" path="res://assets/triangleRight.png" id="6_ewjm7"]
-[ext_resource type="Texture2D" uid="uid://b5c1tlxw3b63m" path="res://assets/leftTriangle.png" id="6_naqm7"]
-[ext_resource type="Texture2D" uid="uid://b04rvmxmm3un3" path="res://assets/rightTriangle.png" id="7_jsbbb"]
+[ext_resource type="Texture2D" uid="uid://crku6ppnu0r5t" path="res://assets/triangleLeft.png" id="6_ir8c6"]
 [ext_resource type="Script" uid="uid://dq7owwp4wqekt" path="res://addons/yetanotherplugins/ScriptsScene/window_label_script.gd" id="7_naqm7"]
 [ext_resource type="Script" uid="uid://buyakxm2gjf3u" path="res://addons/yetanotherplugins/ScriptsScene/resolution_label_script.gd" id="8_ex6w0"]
 [ext_resource type="Texture2D" uid="uid://n4ffjnrpumt6" path="res://assets/screen.png" id="9_ih3f1"]
 [ext_resource type="Texture2D" uid="uid://cjo7l8oj1hbvb" path="res://assets/vert.png" id="11_iwhit"]
 [ext_resource type="Script" uid="uid://bs86pgyg0tbbf" path="res://addons/yetanotherplugins/ScriptsScene/vert_sync_label_script.gd" id="11_jsbbb"]
-
-[sub_resource type="Gradient" id="Gradient_2gtlu"]
-colors = PackedColorArray(0, 0, 0, 1, 0.8431839, 0.8431839, 0.84318376, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_w0cia"]
-gradient = SubResource("Gradient_2gtlu")
 
 [node name="TestUiMain" type="Control"]
 layout_mode = 3
@@ -30,13 +24,14 @@ grow_vertical = 2
 script = ExtResource("1_tg7x6")
 
 [node name="BG" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.47058824)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_w0cia")
+texture = ExtResource("2_ewjm7")
 expand_mode = 1
 stretch_mode = 6
 
@@ -121,7 +116,7 @@ vertical_alignment = 1
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_ewjm7")
+texture_normal = ExtResource("6_ir8c6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -171,7 +166,7 @@ vertical_alignment = 1
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_naqm7")
+texture_normal = ExtResource("6_ir8c6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -188,7 +183,7 @@ script = ExtResource("8_ex6w0")
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("7_jsbbb")
+texture_normal = ExtResource("6_ewjm7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -221,7 +216,7 @@ vertical_alignment = 1
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_naqm7")
+texture_normal = ExtResource("6_ir8c6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -238,7 +233,7 @@ script = ExtResource("11_jsbbb")
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("7_jsbbb")
+texture_normal = ExtResource("6_ewjm7")
 ignore_texture_size = true
 stretch_mode = 5
 

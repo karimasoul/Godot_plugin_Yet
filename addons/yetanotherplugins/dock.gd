@@ -35,6 +35,8 @@ func _ready():
 	else:
 		print("Bouton du dock introuvable.")
 
+
+
 func _on_toggled_volume(checked: bool):
 	if not editor_interface:
 		return 

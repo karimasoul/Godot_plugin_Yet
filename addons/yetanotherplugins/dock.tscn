@@ -15,6 +15,7 @@ scale = Vector2(1.08, 1)
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer"]
 layout_mode = 2
+button_pressed = true
 text = "Volume"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
@@ -25,6 +26,7 @@ offset_bottom = 66.0
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer2"]
 layout_mode = 2
+button_pressed = true
 text = "Window"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
@@ -35,6 +37,7 @@ offset_bottom = 101.0
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer3"]
 layout_mode = 2
+button_pressed = true
 text = "Resolution"
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="."]
@@ -45,5 +48,6 @@ offset_bottom = 137.0
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer4"]
 layout_mode = 2
+button_pressed = true
 text = "Vertical
 "
