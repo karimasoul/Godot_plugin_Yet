@@ -51,3 +51,12 @@ layout_mode = 2
 button_pressed = true
 text = "Vertical
 "
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 139.0
+offset_right = 40.0
+offset_bottom = 179.0
+
+[node name="Panel" type="Panel" parent="VBoxContainer5"]
+layout_mode = 2

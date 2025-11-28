@@ -241,6 +241,21 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="HBoxContainer" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="OverallBox/OptionsBox/HBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [connection signal="pressed" from="OverallBox/UnpauseBtn" to="." method="_on_unpause_btn_pressed"]
 [connection signal="toggled" from="OverallBox/OptionsBox/VolumeBox/SoundButton" to="." method="_on_sound_button_toggled"]
 [connection signal="value_changed" from="OverallBox/OptionsBox/VolumeBox/SoundSlider" to="." method="_on_sound_slider_value_changed"]
