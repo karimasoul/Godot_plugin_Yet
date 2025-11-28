@@ -10,7 +10,6 @@ var maxSize
 func _ready() -> void:
 	#Must set to viewport for the resolution to make sense
 	maxSize = min(widths.size(), heights.size())
-	get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
 	setRes()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
