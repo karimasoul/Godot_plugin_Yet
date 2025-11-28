@@ -1,0 +1,169 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw5ko6si1o4yq"]
+
+[ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://assets/91657.jpg" id="1_lti8b"]
+
+[node name="TesteUIMain" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("1_lti8b")
+stretch_mode = 6
+
+[node name="OverallBox" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="UnpauseBtn" type="TextureButton" parent="OverallBox"]
+layout_mode = 2
+
+[node name="OptionsBox" type="VBoxContainer" parent="OverallBox"]
+layout_mode = 2
+
+[node name="TitleBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="TitleUnderBox" type="HBoxContainer" parent="OverallBox/OptionsBox/TitleBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
+layout_mode = 2
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
+layout_mode = 2
+
+[node name="Filler" type="Control" parent="OverallBox/OptionsBox/TitleBox"]
+layout_mode = 2
+
+[node name="VolumeBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/VolumeBox"]
+layout_mode = 2
+
+[node name="SoundButton" type="TextureButton" parent="OverallBox/OptionsBox/VolumeBox"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="OverallBox/OptionsBox/VolumeBox"]
+layout_mode = 2
+
+[node name="SoundSlider" type="HSlider" parent="OverallBox/OptionsBox/VolumeBox"]
+layout_mode = 2
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/VolumeBox"]
+layout_mode = 2
+
+[node name="WindowBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+
+[node name="WindowButton" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+
+[node name="WindowLabel" type="Label" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+
+[node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+
+[node name="WindowLabel2" type="Label" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+
+[node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+
+[node name="ResolutionBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+
+[node name="ResolutionButton" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+
+[node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+
+[node name="ResolutionLabel2" type="Label" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+
+[node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/ResolutionBox"]
+layout_mode = 2
+
+[node name="VerticalSyncBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+
+[node name="VetSyncButton" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+
+[node name="VetSyncLabel" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+
+[node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+
+[node name="VetSyncLabel2" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+
+[node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+
+[node name="RightFill5" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+
+[node name="BackToMenuBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="Filler" type="Control" parent="OverallBox/OptionsBox/BackToMenuBox"]
+layout_mode = 2
+
+[node name="BackMenuUnderBox" type="HBoxContainer" parent="OverallBox/OptionsBox/BackToMenuBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/BackToMenuBox/BackMenuUnderBox"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="OverallBox/OptionsBox/BackToMenuBox/BackMenuUnderBox"]
+layout_mode = 2
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/BackToMenuBox/BackMenuUnderBox"]
+layout_mode = 2
+
+[node name="ResumeBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="Filler" type="Control" parent="OverallBox/OptionsBox/ResumeBox"]
+layout_mode = 2
+
+[node name="ResumeUnderBox" type="HBoxContainer" parent="OverallBox/OptionsBox/ResumeBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
+layout_mode = 2
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
+layout_mode = 2
