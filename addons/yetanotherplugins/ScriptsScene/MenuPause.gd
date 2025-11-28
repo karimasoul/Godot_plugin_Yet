@@ -1,6 +1,5 @@
 extends Control
 
-
 func _on_unpause_btn_pressed() -> void:
 	visible = false
 

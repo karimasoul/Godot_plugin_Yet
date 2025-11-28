@@ -56,6 +56,29 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="TitleBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="TitleUnderBox" type="HBoxContainer" parent="OverallBox/OptionsBox/TitleBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "TITLE"
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Filler" type="Control" parent="OverallBox/OptionsBox/TitleBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
 [node name="VolumeBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
 layout_mode = 2
 
@@ -241,18 +264,25 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+[node name="ResumeBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
 layout_mode = 2
 
-[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/HBoxContainer"]
+[node name="Filler" type="Control" parent="OverallBox/OptionsBox/ResumeBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ResumeUnderBox" type="HBoxContainer" parent="OverallBox/OptionsBox/ResumeBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="OverallBox/OptionsBox/HBoxContainer"]
+[node name="Button" type="Button" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
 layout_mode = 2
 text = "Resume"
 
-[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/HBoxContainer"]
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
