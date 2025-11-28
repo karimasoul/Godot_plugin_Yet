@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2p0tgh2ug1kw"]
+[gd_scene load_steps=3 format=3 uid="uid://c2p0tgh2ug1kw"]
 
 [ext_resource type="Script" uid="uid://dvt7gva8igsnu" path="res://addons/yetanotherplugins/dock.gd" id="1_ex2rw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex2rw"]
+bg_color = Color(0.3128339, 0.04854031, 0.41029122, 1)
 
 [node name="Dock" type="Control"]
 layout_mode = 3
@@ -60,3 +63,4 @@ offset_bottom = 179.0
 
 [node name="Panel" type="Panel" parent="VBoxContainer5"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ex2rw")
