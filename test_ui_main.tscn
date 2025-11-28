@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://lesnexvedow7"]
+[gd_scene load_steps=14 format=3 uid="uid://lesnexvedow7"]
 
 [ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_tg7x6"]
 [ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://assets/91657.jpg" id="2_ewjm7"]
-[ext_resource type="PackedScene" uid="uid://nc2wml3vnj3o" path="res://fsbh.tscn" id="2_ih3f1"]
 [ext_resource type="Texture2D" uid="uid://cdsk0c3kahecj" path="res://assets/cross2.png" id="2_ir8c6"]
 [ext_resource type="Texture2D" uid="uid://cesf0jgrx67tr" path="res://assets/SoundOnn.png" id="3_jsbbb"]
 [ext_resource type="Texture2D" uid="uid://8vhla3kfhvkj" path="res://assets/SoundOfff.png" id="4_ir8c6"]
@@ -23,7 +22,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tg7x6")
-MainMenu = ExtResource("2_ih3f1")
 
 [node name="BG" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.47058824)
