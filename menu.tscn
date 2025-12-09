@@ -1,17 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw6n8y1sojmik"]
+[gd_scene load_steps=14 format=3 uid="uid://dw6n8y1sojmik"]
 
-[ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://assets/91657.jpg" id="1_lti8b"]
-[ext_resource type="Texture2D" uid="uid://cdsk0c3kahecj" path="res://assets/cross2.png" id="2_ouk20"]
+[ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_g7jxm"]
+[ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://assets/91657.jpg" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://cdsk0c3kahecj" path="res://assets/cross2.png" id="2_mae5d"]
+[ext_resource type="Texture2D" uid="uid://cesf0jgrx67tr" path="res://assets/SoundOnn.png" id="3_nrnbx"]
+[ext_resource type="Texture2D" uid="uid://8vhla3kfhvkj" path="res://assets/SoundOfff.png" id="4_iqepy"]
+[ext_resource type="Texture2D" uid="uid://c5mn6h4eolpwr" path="res://assets/window2.png" id="5_h1wq0"]
+[ext_resource type="Texture2D" uid="uid://crku6ppnu0r5t" path="res://assets/triangleLeft.png" id="6_dwrpx"]
+[ext_resource type="Texture2D" uid="uid://ba3knhf5v0kam" path="res://assets/triangleRight.png" id="7_g7jxm"]
+[ext_resource type="Texture2D" uid="uid://n4ffjnrpumt6" path="res://assets/screen.png" id="8_jspdm"]
+[ext_resource type="Script" uid="uid://dq7owwp4wqekt" path="res://addons/yetanotherplugins/ScriptsScene/window_label_script.gd" id="8_oxnod"]
+[ext_resource type="Texture2D" uid="uid://cjo7l8oj1hbvb" path="res://assets/vert.png" id="9_oxnod"]
+[ext_resource type="Script" uid="uid://buyakxm2gjf3u" path="res://addons/yetanotherplugins/ScriptsScene/resolution_label_script.gd" id="11_gd0jp"]
+[ext_resource type="Script" uid="uid://bs86pgyg0tbbf" path="res://addons/yetanotherplugins/ScriptsScene/vert_sync_label_script.gd" id="13_4ndjb"]
 
 [node name="TesteUIMain" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g7jxm")
 
 [node name="BG" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.47058824)
 layout_mode = 0
 offset_right = 5000.0
 offset_bottom = 3334.0
-texture = ExtResource("1_lti8b")
+texture = ExtResource("1_ouk20")
+expand_mode = 1
 stretch_mode = 6
 
 [node name="OverallBox" type="HBoxContainer" parent="."]
@@ -25,10 +45,13 @@ offset_bottom = 648.0
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 0
-texture_normal = ExtResource("2_ouk20")
+texture_normal = ExtResource("2_mae5d")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="OptionsBox" type="VBoxContainer" parent="OverallBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
 [node name="TitleBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
@@ -39,14 +62,19 @@ layout_mode = 2
 
 [node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "TITLE"
 
 [node name="RightFill" type="Control" parent="OverallBox/OptionsBox/TitleBox/TitleUnderBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Filler" type="Control" parent="OverallBox/OptionsBox/TitleBox"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="VolumeBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
@@ -54,95 +82,191 @@ layout_mode = 2
 
 [node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/VolumeBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="SoundButton" type="TextureButton" parent="OverallBox/OptionsBox/VolumeBox"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_nrnbx")
+texture_pressed = ExtResource("4_iqepy")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="VolumeLabel" type="Label" parent="OverallBox/OptionsBox/VolumeBox"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Volume :"
+vertical_alignment = 1
 
 [node name="SoundSlider" type="HSlider" parent="OverallBox/OptionsBox/VolumeBox"]
+custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
+size_flags_vertical = 4
+step = 10.0
+value = 100.0
 
 [node name="RightFill" type="Control" parent="OverallBox/OptionsBox/VolumeBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="WindowBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
 layout_mode = 2
 
 [node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/WindowBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="WindowButton" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+texture_normal = ExtResource("5_h1wq0")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="WindowLabel" type="Label" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Window :"
+vertical_alignment = 1
 
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+texture_normal = ExtResource("6_dwrpx")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="WindowLabel2" type="Label" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "windowed"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_oxnod")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+texture_normal = ExtResource("7_g7jxm")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="RightFill" type="Control" parent="OverallBox/OptionsBox/WindowBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ResolutionBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
 layout_mode = 2
 
 [node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/ResolutionBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ResolutionButton" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+texture_normal = ExtResource("8_jspdm")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="ResolutionLabel" type="Label" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Resolution :"
+vertical_alignment = 1
 
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+texture_normal = ExtResource("6_dwrpx")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="ResolutionLabel2" type="Label" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "1920x1080"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_gd0jp")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+texture_normal = ExtResource("7_g7jxm")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="RightFill" type="Control" parent="OverallBox/OptionsBox/ResolutionBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VerticalSyncBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
 layout_mode = 2
 
 [node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VertSyncButton" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+texture_normal = ExtResource("9_oxnod")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="VertSyncLabel" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Vertical Sync :"
+vertical_alignment = 1
 
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+texture_normal = ExtResource("6_dwrpx")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="VertSyncLabel2" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "on"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_4ndjb")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+texture_normal = ExtResource("7_g7jxm")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="RightFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="BackToMenuBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
 layout_mode = 2
 
 [node name="Filler" type="Control" parent="OverallBox/OptionsBox/BackToMenuBox"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="BackMenuUnderBox" type="HBoxContainer" parent="OverallBox/OptionsBox/BackToMenuBox"]
@@ -150,17 +274,21 @@ layout_mode = 2
 
 [node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/BackToMenuBox/BackMenuUnderBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="OverallBox/OptionsBox/BackToMenuBox/BackMenuUnderBox"]
 layout_mode = 2
+text = "Main menu"
 
 [node name="RightFill" type="Control" parent="OverallBox/OptionsBox/BackToMenuBox/BackMenuUnderBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ResumeBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
 layout_mode = 2
 
 [node name="Filler" type="Control" parent="OverallBox/OptionsBox/ResumeBox"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="ResumeUnderBox" type="HBoxContainer" parent="OverallBox/OptionsBox/ResumeBox"]
@@ -168,9 +296,12 @@ layout_mode = 2
 
 [node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
 layout_mode = 2
+text = "Resume"
 
 [node name="RightFill" type="Control" parent="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox"]
 layout_mode = 2
+size_flags_horizontal = 3
