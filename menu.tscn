@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw5ko6si1o4yq"]
+[gd_scene load_steps=3 format=3 uid="uid://dw6n8y1sojmik"]
 
 [ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://assets/91657.jpg" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://cdsk0c3kahecj" path="res://assets/cross2.png" id="2_ouk20"]
 
 [node name="TesteUIMain" type="Control"]
 layout_mode = 3
@@ -8,8 +9,8 @@ anchors_preset = 0
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_right = 5000.0
+offset_bottom = 3334.0
 texture = ExtResource("1_lti8b")
 stretch_mode = 6
 
@@ -17,12 +18,18 @@ stretch_mode = 6
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="UnpauseBtn" type="TextureButton" parent="OverallBox"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("2_ouk20")
 
 [node name="OptionsBox" type="VBoxContainer" parent="OverallBox"]
 layout_mode = 2
+alignment = 1
 
 [node name="TitleBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]
 layout_mode = 2
@@ -114,22 +121,22 @@ layout_mode = 2
 [node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
 
-[node name="VetSyncButton" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+[node name="VertSyncButton" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
 
-[node name="VetSyncLabel" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+[node name="VertSyncLabel" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
 
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
 
-[node name="VetSyncLabel2" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+[node name="VertSyncLabel2" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
 
-[node name="RightFill5" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 layout_mode = 2
 
 [node name="BackToMenuBox" type="VBoxContainer" parent="OverallBox/OptionsBox"]

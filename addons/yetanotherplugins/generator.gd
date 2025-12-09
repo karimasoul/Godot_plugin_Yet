@@ -15,17 +15,20 @@ func generate_main_menu():
 	fond.name = "BG"
 	fond.texture = load("res://assets/91657.jpg")
 	fond.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	fond.anchor_right = 1
-	fond.anchor_bottom = 1
+	fond.size = Vector2(5000.0, 3334.0)
+	#fond.anchor_right = 1
+	#fond.anchor_bottom = 1
 	menu.add_child(fond)
 	fond.owner = menu  
 
 # hbox qui contient tout
 	var OverallBox = HBoxContainer.new()
 	OverallBox.name = "OverallBox"
-	
-	OverallBox.anchor_right = 1
-	OverallBox.anchor_bottom = 1
+	OverallBox.set_anchors_preset(Control.PRESET_FULL_RECT)
+	OverallBox.size = Vector2(1152.0,648.0)
+	#verifie
+	#OverallBox.anchor_right = 1
+	#OverallBox.anchor_bottom = 1
 	menu.add_child(OverallBox)
 	OverallBox.owner = menu
 	
@@ -33,9 +36,10 @@ func generate_main_menu():
 
 	var UnpauseBtn = TextureButton.new()
 	UnpauseBtn.name = "UnpauseBtn"
-	
-	#UnpauseBtn.anchor_right = 1
-	#UnpauseBtn.anchor_bottom = 1
+	UnpauseBtn.texture_normal = load("res://assets/cross2.png")
+	UnpauseBtn.custom_minimum_size= Vector2(50.0,50.0)
+	UnpauseBtn.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+
 	OverallBox.add_child(UnpauseBtn)
 	UnpauseBtn.owner = menu
 	
@@ -43,9 +47,8 @@ func generate_main_menu():
 
 	var OptionsBox = VBoxContainer.new()
 	OptionsBox.name = "OptionsBox"
-	
-	#OptionsBox.anchor_right = 0.5
-	#OptionsBox.anchor_bottom = 0.5
+	OptionsBox.alignment = BoxContainer.ALIGNMENT_CENTER
+	OptionsBox.size_flags_horizontal = Control.SIZE_FILL
 	OverallBox.add_child(OptionsBox)
 	OptionsBox.owner = menu
 	
@@ -53,9 +56,6 @@ func generate_main_menu():
 
 	var TitleBox = VBoxContainer.new()
 	TitleBox.name = "TitleBox"
-	
-	#TitleBox.anchor_right = 0.5
-	#TitleBox.anchor_bottom = 0.5
 	OptionsBox.add_child(TitleBox)
 	TitleBox.owner = menu
 	
@@ -68,6 +68,7 @@ func generate_main_menu():
 		#"
 	var LeftFill1 = Control.new()
 	LeftFill1.name = "LeftFill"
+	LeftFill1.size_flags_horizontal = Control.SIZE_FILL
 	TitleUnderBox1.add_child(LeftFill1)
 	LeftFill1.owner = menu
 	
