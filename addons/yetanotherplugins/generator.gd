@@ -6,9 +6,9 @@ extends Node
 #gros blem ici çmr
 func generate_main_menu():
 	var menu = Control.new()
-	menu.name = "TesteUIMain"
+	menu.name = "TestUIMain"
+	#menu.set_anchors_preset(Control.PRESET_FULL_RECT) anchors de merde
 	menu.size = Vector2(1152.0, 648.0)
-	menu.set_anchors_preset(Control.PRESET_FULL_RECT)
 	menu.set_script(load("res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd"))
 
 # background
@@ -18,22 +18,21 @@ func generate_main_menu():
 	fond.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
 	fond.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	
+	#fond.layout_mode ça m'a fait chier 3h
+	#fond.set_anchors_preset(Control.PRESET_FULL_RECT) ça m'a fait chier 3h
+
+	
+	fond.size = Vector2(1152.0, 648.0)
 	fond.modulate = "#ffffff78"
-	fond.size = Vector2(5000.0, 3334.0)
-	#fond.anchor_right = 1
-	#fond.anchor_bottom = 1
 	menu.add_child(fond)
 	fond.owner = menu  
 
 # hbox qui contient tout
 	var OverallBox = HBoxContainer.new()
 	OverallBox.name = "OverallBox"
-	OverallBox.layout_mode
-	OverallBox.set_anchors_preset(Control.PRESET_FULL_RECT)
+	#OverallBox.layout_mode ça m'a fait chier 3h
+	#OverallBox.set_anchors_preset(Control.PRESET_FULL_RECT) ça m'a fait chier 3h
 	OverallBox.size = Vector2(1152.0,648.0)
-	#verifie
-	#OverallBox.anchor_right = 1
-	#OverallBox.anchor_bottom = 1
 	menu.add_child(OverallBox)
 	OverallBox.owner = menu
 	
@@ -50,6 +49,11 @@ func generate_main_menu():
 	#fin modif
 	OverallBox.add_child(UnpauseBtn)
 	UnpauseBtn.owner = menu
+	UnpauseBtn.pressed.connect(
+	Callable(menu, "_on_unpause_btn_pressed"),
+	Object.CONNECT_PERSIST
+	)
+
 	
 # Vbox 
 
@@ -144,6 +148,10 @@ func generate_main_menu():
 	#end modif
 	VolumeBox.add_child(SoundButton2)
 	SoundButton2.owner = menu
+	SoundButton2.toggled.connect(
+	Callable(menu, "_on_sound_button_toggled"),
+	Object.CONNECT_PERSIST
+	)
 	
 	var VolumeLabel2 = Label.new()
 	VolumeLabel2.name = "VolumeLabel"
@@ -167,6 +175,10 @@ func generate_main_menu():
 	#end modif
 	VolumeBox.add_child( SoundSlider2)
 	SoundSlider2.owner = menu
+	SoundSlider2.value_changed.connect(
+	Callable(menu, "_on_sound_slider_value_changed"),
+	Object.CONNECT_PERSIST
+	)
 	
 	var RightFill2 = Control.new()
 	RightFill2.name = "RightFill"
@@ -229,7 +241,14 @@ func generate_main_menu():
 	WindowBox.add_child(Left3)
 	Left3.owner = menu
 	
+	
 	var WindowLabel23 = Label.new()
+	
+	Left3.pressed.connect(
+	Callable(WindowLabel23, "_on_left_pressed"),
+	Object.CONNECT_PERSIST
+	)
+
 	WindowLabel23.name = "WindowLabel2"
 	#modif done
 	WindowLabel23.text="windowed"
@@ -253,6 +272,10 @@ func generate_main_menu():
 	#end modif
 	WindowBox.add_child(Right3)
 	Right3.owner = menu
+	Right3.pressed.connect(
+	Callable(WindowLabel23, "_on_right_pressed"),
+	Object.CONNECT_PERSIST
+	)
 	
 	var RightFill3 = Control.new()
 	RightFill3.name = "RightFill"
@@ -314,6 +337,12 @@ func generate_main_menu():
 	Left4.owner = menu
 	
 	var ResolutionLabel24 = Label.new()
+	
+	Left4.pressed.connect(
+	Callable(ResolutionLabel24, "_on_left_pressed"),
+	Object.CONNECT_PERSIST
+	)
+	
 	ResolutionLabel24.name = "ResolutionLabel2"
 	#modif done
 	ResolutionLabel24.text="1920x1080"
@@ -337,6 +366,10 @@ func generate_main_menu():
 	#end modif
 	ResolutionBox.add_child(Right4)
 	Right4.owner = menu
+	Right4.pressed.connect(
+	Callable(ResolutionLabel24, "_on_right_pressed"),
+	Object.CONNECT_PERSIST
+	)
 	
 	var RightFill4 = Control.new()
 	RightFill4.name = "RightFill"
@@ -400,6 +433,12 @@ func generate_main_menu():
 	Left5.owner = menu
 	
 	var VetSyncLabel25 = Label.new()
+	
+	Left5.pressed.connect(
+	Callable(VetSyncLabel25, "_on_left_pressed"),
+	Object.CONNECT_PERSIST
+	)
+	
 	VetSyncLabel25.name = "VertSyncLabel2"
 	#modif done
 	VetSyncLabel25.text="on"
@@ -423,6 +462,10 @@ func generate_main_menu():
 	#end modif
 	VerticalSyncBox.add_child(Right5)
 	Right5.owner = menu
+	Right5.pressed.connect(
+	Callable(VetSyncLabel25, "_on_right_pressed"),
+	Object.CONNECT_PERSIST
+	)
 	
 	var RightFill5 = Control.new()
 	RightFill5.name = "RightFill"
@@ -473,6 +516,10 @@ func generate_main_menu():
 	#end modif
 	BackMenuUnderBox6.add_child(Button6)
 	Button6.owner = menu
+	Button6.pressed.connect(
+	Callable(menu, "_load_scene"),
+	Object.CONNECT_PERSIST
+	)
 	
 	var RightFill6 = Control.new()
 	RightFill6.name = "RightFill"
@@ -532,34 +579,6 @@ func generate_main_menu():
 	RightFill7.owner = menu
 
 	
-	
-	
-	
-	#
-	#var titre = Label.new()
-	#titre.text = "My Game"
-	#titre.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	#titre.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	#titre.anchor_left = 0.5
-	#titre.anchor_top = 0.1
-	#fond.add_child(titre)
-	#titre.owner = menu 
-#
-	#
-	#var vbox = VBoxContainer.new()
-	#vbox.anchor_left = 0.5
-	#vbox.anchor_top = 0.5
-	#vbox.position = Vector2(-50, -50)
-	#fond.add_child(vbox)
-	#vbox.owner = menu 
-#
-	#
-	#for t in ["Pause", "Parameter", "Exit"]:
-		#var btn = Button.new()
-		#btn.text = t
-		#vbox.add_child(btn)
-		#btn.owner = menu  
-
 	
 	var scene = PackedScene.new()
 	scene.pack(menu)
