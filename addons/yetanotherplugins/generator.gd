@@ -2,9 +2,12 @@
 extends Node
 
 
+
+var VolumeBox: HBoxContainer 
+
 # for teste
 #gros blem ici çmr
-func generate_main_menu():
+func generate_main_menu(is_visible_volume: bool = true, is_visible_window: bool = true, is_visible_resolution: bool = true, is_visible_vertical: bool = true, is_visible_title: bool = true, is_visible_bmain: bool = true, is_visible_bresume: bool = true, is_visible_exit: bool = true ):
 	var menu = Control.new()
 	menu.name = "TestUIMain"
 	#menu.set_anchors_preset(Control.PRESET_FULL_RECT) anchors de merde
@@ -40,6 +43,7 @@ func generate_main_menu():
 
 	var UnpauseBtn = TextureButton.new()
 	UnpauseBtn.name = "UnpauseBtn"
+	UnpauseBtn.visible=is_visible_exit
 	#modif done
 	UnpauseBtn.ignore_texture_size=true
 	UnpauseBtn.stretch_mode=TextureButton.STRETCH_KEEP_ASPECT_CENTERED
@@ -70,6 +74,7 @@ func generate_main_menu():
 
 	var TitleBox = VBoxContainer.new()
 	TitleBox.name = "TitleBox"
+	TitleBox.visible=is_visible_title
 	#nada
 	OptionsBox.add_child(TitleBox)
 	TitleBox.owner = menu
@@ -123,7 +128,9 @@ func generate_main_menu():
 
 	var VolumeBox = HBoxContainer.new()
 	VolumeBox.name = "VolumeBox"
-	#nada
+	
+	VolumeBox.visible=is_visible_volume
+
 	OptionsBox.add_child(VolumeBox)
 	VolumeBox.owner = menu
 	
@@ -193,7 +200,9 @@ func generate_main_menu():
 	
 	var WindowBox = HBoxContainer.new()
 	WindowBox.name = "WindowBox"
-	#nada
+	
+	WindowBox.visible=is_visible_window
+	
 	OptionsBox.add_child(WindowBox)
 	WindowBox.owner = menu
 	
@@ -289,7 +298,9 @@ func generate_main_menu():
 
 	var ResolutionBox = HBoxContainer.new()
 	ResolutionBox.name = "ResolutionBox"
-	#nada
+	
+	ResolutionBox.visible=is_visible_resolution
+
 	OptionsBox.add_child(ResolutionBox)
 	ResolutionBox.owner = menu
 	
@@ -384,7 +395,9 @@ func generate_main_menu():
 
 	var VerticalSyncBox = HBoxContainer.new()
 	VerticalSyncBox.name = "VerticalSyncBox"
-	#nada
+	
+	VerticalSyncBox.visible=is_visible_vertical
+	
 	OptionsBox.add_child(VerticalSyncBox)
 	VerticalSyncBox.owner = menu
 	
@@ -479,7 +492,9 @@ func generate_main_menu():
 	
 	var BackToMenuBox = VBoxContainer.new()
 	BackToMenuBox.name = "BackToMenuBox"
-	#nada
+	
+	BackToMenuBox.visible=is_visible_bmain
+	
 	OptionsBox.add_child(BackToMenuBox)
 	BackToMenuBox.owner = menu
 	
@@ -533,6 +548,7 @@ func generate_main_menu():
 	
 	var ResumeBox = VBoxContainer.new()
 	ResumeBox.name = "ResumeBox"
+	ResumeBox.visible=is_visible_bresume
 	#nada
 	OptionsBox.add_child(ResumeBox)
 	ResumeBox.owner = menu

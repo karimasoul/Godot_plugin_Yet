@@ -1,14 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2p0tgh2ug1kw"]
-
-[ext_resource type="Script" uid="uid://dvt7gva8igsnu" path="res://addons/yetanotherplugins/dock.gd" id="1_ex2rw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex2rw"]
-bg_color = Color(0.3128339, 0.04854031, 0.41029122, 1)
+[gd_scene format=3 uid="uid://c2p0tgh2ug1kw"]
 
 [node name="Dock" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_ex2rw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -57,10 +51,50 @@ text = "Vertical
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_top = 139.0
-offset_right = 40.0
-offset_bottom = 179.0
+offset_left = 137.0
+offset_right = 224.0
+offset_bottom = 31.0
 
-[node name="Panel" type="Panel" parent="VBoxContainer5"]
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer5"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ex2rw")
+button_pressed = true
+text = "Title
+"
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 36.0
+offset_right = 263.0
+offset_bottom = 67.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer6"]
+layout_mode = 2
+button_pressed = true
+text = "Button Main
+"
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 70.0
+offset_right = 286.0
+offset_bottom = 101.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer7"]
+layout_mode = 2
+button_pressed = true
+text = "Button Resume
+"
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 106.0
+offset_right = 226.0
+offset_bottom = 137.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer8"]
+layout_mode = 2
+button_pressed = true
+text = "Exit"
