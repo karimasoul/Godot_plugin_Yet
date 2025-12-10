@@ -310,3 +310,4 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="OverallBox/OptionsBox/VerticalSyncBox/Left" to="OverallBox/OptionsBox/VerticalSyncBox/VertSyncLabel2" method="_on_left_pressed"]
 [connection signal="pressed" from="OverallBox/OptionsBox/VerticalSyncBox/Right" to="OverallBox/OptionsBox/VerticalSyncBox/VertSyncLabel2" method="_on_right_pressed"]
 [connection signal="pressed" from="OverallBox/OptionsBox/BackToMenuBox/BackMenuUnderBox/Button" to="." method="_load_scene"]
+[connection signal="pressed" from="OverallBox/OptionsBox/ResumeBox/ResumeUnderBox/Button" to="." method="_on_unpause_btn_pressed"]

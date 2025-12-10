@@ -585,6 +585,11 @@ func generate_main_menu(is_visible_volume: bool = true, is_visible_window: bool 
 	#end modif
 	ResumeUnderBox7.add_child( Button7)
 	Button7.owner = menu
+	#connexion
+	Button7.pressed.connect(
+	Callable(menu, "_on_unpause_btn_pressed"),
+	Object.CONNECT_PERSIST
+	)
 	
 	var RightFill7 = Control.new()
 	RightFill7.name = "RightFill"
