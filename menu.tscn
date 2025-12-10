@@ -1,53 +1,45 @@
-[gd_scene load_steps=14 format=3 uid="uid://lesnexvedow7"]
+[gd_scene load_steps=14 format=3 uid="uid://dw6n8y1sojmik"]
 
-[ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_tg7x6"]
-[ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://assets/91657.jpg" id="2_ewjm7"]
-[ext_resource type="Texture2D" uid="uid://cdsk0c3kahecj" path="res://assets/cross2.png" id="2_ir8c6"]
-[ext_resource type="Texture2D" uid="uid://cesf0jgrx67tr" path="res://assets/SoundOnn.png" id="3_jsbbb"]
-[ext_resource type="Texture2D" uid="uid://8vhla3kfhvkj" path="res://assets/SoundOfff.png" id="4_ir8c6"]
-[ext_resource type="Texture2D" uid="uid://c5mn6h4eolpwr" path="res://assets/window2.png" id="5_ewjm7"]
-[ext_resource type="Texture2D" uid="uid://ba3knhf5v0kam" path="res://assets/triangleRight.png" id="6_ewjm7"]
-[ext_resource type="Texture2D" uid="uid://crku6ppnu0r5t" path="res://assets/triangleLeft.png" id="6_ir8c6"]
-[ext_resource type="Script" uid="uid://dq7owwp4wqekt" path="res://addons/yetanotherplugins/ScriptsScene/window_label_script.gd" id="7_naqm7"]
-[ext_resource type="Script" uid="uid://buyakxm2gjf3u" path="res://addons/yetanotherplugins/ScriptsScene/resolution_label_script.gd" id="8_ex6w0"]
-[ext_resource type="Texture2D" uid="uid://n4ffjnrpumt6" path="res://assets/screen.png" id="9_ih3f1"]
-[ext_resource type="Texture2D" uid="uid://cjo7l8oj1hbvb" path="res://assets/vert.png" id="11_iwhit"]
-[ext_resource type="Script" uid="uid://bs86pgyg0tbbf" path="res://addons/yetanotherplugins/ScriptsScene/vert_sync_label_script.gd" id="11_jsbbb"]
+[ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_g7jxm"]
+[ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://assets/91657.jpg" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://cdsk0c3kahecj" path="res://assets/cross2.png" id="2_mae5d"]
+[ext_resource type="Texture2D" uid="uid://cesf0jgrx67tr" path="res://assets/SoundOnn.png" id="3_nrnbx"]
+[ext_resource type="Texture2D" uid="uid://8vhla3kfhvkj" path="res://assets/SoundOfff.png" id="4_iqepy"]
+[ext_resource type="Texture2D" uid="uid://c5mn6h4eolpwr" path="res://assets/window2.png" id="5_h1wq0"]
+[ext_resource type="Texture2D" uid="uid://crku6ppnu0r5t" path="res://assets/triangleLeft.png" id="6_dwrpx"]
+[ext_resource type="Texture2D" uid="uid://ba3knhf5v0kam" path="res://assets/triangleRight.png" id="7_g7jxm"]
+[ext_resource type="Texture2D" uid="uid://n4ffjnrpumt6" path="res://assets/screen.png" id="8_jspdm"]
+[ext_resource type="Script" uid="uid://dq7owwp4wqekt" path="res://addons/yetanotherplugins/ScriptsScene/window_label_script.gd" id="8_oxnod"]
+[ext_resource type="Texture2D" uid="uid://cjo7l8oj1hbvb" path="res://assets/vert.png" id="9_oxnod"]
+[ext_resource type="Script" uid="uid://buyakxm2gjf3u" path="res://addons/yetanotherplugins/ScriptsScene/resolution_label_script.gd" id="11_gd0jp"]
+[ext_resource type="Script" uid="uid://bs86pgyg0tbbf" path="res://addons/yetanotherplugins/ScriptsScene/vert_sync_label_script.gd" id="13_4ndjb"]
 
-[node name="TestUiMain" type="Control"]
+[node name="TestUIMain" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_tg7x6")
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_g7jxm")
 
 [node name="BG" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.47058824)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_ewjm7")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_ouk20")
 expand_mode = 1
 stretch_mode = 6
 
 [node name="OverallBox" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="UnpauseBtn" type="TextureButton" parent="OverallBox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 0
-texture_normal = ExtResource("2_ir8c6")
+texture_normal = ExtResource("2_mae5d")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -90,8 +82,8 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("3_jsbbb")
-texture_pressed = ExtResource("4_ir8c6")
+texture_normal = ExtResource("3_nrnbx")
+texture_pressed = ExtResource("4_iqepy")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -124,7 +116,7 @@ size_flags_horizontal = 3
 [node name="WindowButton" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("5_ewjm7")
+texture_normal = ExtResource("5_h1wq0")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -139,7 +131,7 @@ vertical_alignment = 1
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_ir8c6")
+texture_normal = ExtResource("6_dwrpx")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -151,12 +143,12 @@ theme_override_font_sizes/font_size = 30
 text = "windowed"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("7_naqm7")
+script = ExtResource("8_oxnod")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_ewjm7")
+texture_normal = ExtResource("7_g7jxm")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -174,7 +166,7 @@ size_flags_horizontal = 3
 [node name="ResolutionButton" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("9_ih3f1")
+texture_normal = ExtResource("8_jspdm")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -189,7 +181,7 @@ vertical_alignment = 1
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_ir8c6")
+texture_normal = ExtResource("6_dwrpx")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -201,12 +193,12 @@ theme_override_font_sizes/font_size = 30
 text = "1920x1080"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("8_ex6w0")
+script = ExtResource("11_gd0jp")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/ResolutionBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_ewjm7")
+texture_normal = ExtResource("7_g7jxm")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -224,7 +216,7 @@ size_flags_horizontal = 3
 [node name="VertSyncButton" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("11_iwhit")
+texture_normal = ExtResource("9_oxnod")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -239,7 +231,7 @@ vertical_alignment = 1
 [node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_ir8c6")
+texture_normal = ExtResource("6_dwrpx")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -251,12 +243,12 @@ theme_override_font_sizes/font_size = 30
 text = "on"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("11_jsbbb")
+script = ExtResource("13_4ndjb")
 
 [node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture_normal = ExtResource("6_ewjm7")
+texture_normal = ExtResource("7_g7jxm")
 ignore_texture_size = true
 stretch_mode = 5
 

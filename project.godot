@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pluginn"
-run/main_scene="uid://lesnexvedow7"
+run/main_scene="uid://dw6n8y1sojmik"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
