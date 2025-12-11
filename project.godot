@@ -11,11 +11,13 @@ config_version=5
 [application]
 
 config/name="Pluginn"
+run/main_scene="uid://2q0rvubajhj3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/stretch/mode="canvas_items"
 mouse_cursor/main_scene="uid://lesnexvedow7"
 
 [editor_plugins]

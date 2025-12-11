@@ -16,33 +16,27 @@ var btn_generate: Button
 func _enter_tree():
 	var dock_scene = preload("res://addons/yetanotherplugins/dock.tscn")
 	dock_instance = dock_scene.instantiate()
-
-	
-	#dock_instance.editor_interface = get_editor_interface()
+	dock_instance.name = "Pause menu generator"
 
 	add_control_to_dock(DOCK_SLOT_RIGHT_BL, dock_instance)
-	#add_tool_menu_item("Generate menu", Callable(self, "_on_generate_main_menu"))
-	#hide_volume=CheckBox.new()
-	#hide_volume.text = "Show VolumeBox"
-	#dock_instance.add_child(hide_volume)
-	hide_volume = dock_instance.get_node("VBoxContainer/CheckBox")
-	hide_window = dock_instance.get_node("VBoxContainer2/CheckBox")
-	hide_resolution = dock_instance.get_node("VBoxContainer3/CheckBox")
-	hide_vertical = dock_instance.get_node("VBoxContainer4/CheckBox")
 	
-	hide_title = dock_instance.get_node("VBoxContainer5/CheckBox")
-	hide_bmain = dock_instance.get_node("VBoxContainer6/CheckBox")
-	hide_bresume = dock_instance.get_node("VBoxContainer7/CheckBox")
-	hide_exit = dock_instance.get_node("VBoxContainer8/CheckBox")
+	hide_volume = dock_instance.get_node("globalLayout/options/LeftColumn/volume")
+	hide_window = dock_instance.get_node("globalLayout/options/LeftColumn/window")
+	hide_resolution = dock_instance.get_node("globalLayout/options/LeftColumn/resolution")
+	hide_vertical = dock_instance.get_node("globalLayout/options/LeftColumn/vertsync")
 	
+	hide_title = dock_instance.get_node("globalLayout/options/RightColumn/title")
+	hide_bmain = dock_instance.get_node("globalLayout/options/RightColumn/mainbtn")
+	hide_bresume = dock_instance.get_node("globalLayout/options/RightColumn/resumebtn")
+	hide_exit = dock_instance.get_node("globalLayout/options/RightColumn/exitbtn")
 	
-
 	
 	btn_generate = Button.new()
-	btn_generate.text="Gnerate Menu"
+	btn_generate.text="Generate Menu"
 	btn_generate.size=Vector2(129.0,31.0)
 	btn_generate.position=Vector2(0.0,175.0)
-	dock_instance.add_child(btn_generate)
+	dock_instance.get_node("globalLayout/generateLine").add_child(btn_generate)
+	dock_instance.get_node("globalLayout/generateLine").move_child(btn_generate, 1)
 	btn_generate.pressed.connect(Callable(self,"_on_generate_main_menu"))
 
 
@@ -63,8 +57,11 @@ func _on_generate_main_menu() -> void:
 	if generator_script:
 		var generator = generator_script.new()
 		add_child(generator)  
-		#generator.flag_volume = hide_volume.pressed
-		generator.generate_main_menu(hide_volume.button_pressed, hide_window.button_pressed, hide_resolution.button_pressed, hide_vertical.button_pressed, hide_title.button_pressed, hide_bmain.button_pressed, hide_bresume.button_pressed, hide_exit.button_pressed )
+		var scene_name = dock_instance.get_node("globalLayout/SceneTitle").text
+		generator.generate_main_menu(hide_volume.button_pressed, hide_window.button_pressed, 
+		hide_resolution.button_pressed, hide_vertical.button_pressed, hide_title.button_pressed, 
+		hide_bmain.button_pressed, hide_bresume.button_pressed, hide_exit.button_pressed,
+		scene_name )
 		generator.queue_free() 
 	else:
 		push_error("Erreur chargement script générateur")

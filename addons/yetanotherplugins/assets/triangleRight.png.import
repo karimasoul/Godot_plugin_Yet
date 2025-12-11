@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cesf0jgrx67tr"
-path="res://.godot/imported/SoundOnn.png-b8dc664dc824af463e4227ea932d94d4.ctex"
+uid="uid://ba3knhf5v0kam"
+path="res://.godot/imported/triangleRight.png-30da5edf17aafa8a508aa27c1d57f671.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SoundOnn.png"
-dest_files=["res://.godot/imported/SoundOnn.png-b8dc664dc824af463e4227ea932d94d4.ctex"]
+source_file="res://addons/yetanotherplugins/assets/triangleRight.png"
+dest_files=["res://.godot/imported/triangleRight.png-30da5edf17aafa8a508aa27c1d57f671.ctex"]
 
 [params]
 

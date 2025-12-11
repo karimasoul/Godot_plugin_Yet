@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crku6ppnu0r5t"
-path="res://.godot/imported/triangleLeft.png-e0dc5fc9d8960fa919c0928e6ac6103d.ctex"
+uid="uid://8vhla3kfhvkj"
+path="res://.godot/imported/SoundOff.png-08d0b497ba65a16f6632971273e6e4d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/triangleLeft.png"
-dest_files=["res://.godot/imported/triangleLeft.png-e0dc5fc9d8960fa919c0928e6ac6103d.ctex"]
+source_file="res://addons/yetanotherplugins/assets/SoundOff.png"
+dest_files=["res://.godot/imported/SoundOff.png-08d0b497ba65a16f6632971273e6e4d5.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n4ffjnrpumt6"
-path="res://.godot/imported/screen.png-87ed1d38aa248acbe2329756f8cac7a7.ctex"
+uid="uid://crku6ppnu0r5t"
+path="res://.godot/imported/triangleLeft.png-d6fd23cc6e4223dbb7e55fda92e9c0f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/screen.png"
-dest_files=["res://.godot/imported/screen.png-87ed1d38aa248acbe2329756f8cac7a7.ctex"]
+source_file="res://addons/yetanotherplugins/assets/triangleLeft.png"
+dest_files=["res://.godot/imported/triangleLeft.png-d6fd23cc6e4223dbb7e55fda92e9c0f1.ctex"]
 
 [params]
 

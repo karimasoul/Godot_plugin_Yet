@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwyeqkrr12j03"
-path="res://.godot/imported/windoww.png-67c250754f751905d9ab3b82fc8cae81.ctex"
+uid="uid://c5mn6h4eolpwr"
+path="res://.godot/imported/windowMode.png-be5f36f42cda6b4cea9c2c303730f725.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/windoww.png"
-dest_files=["res://.godot/imported/windoww.png-67c250754f751905d9ab3b82fc8cae81.ctex"]
+source_file="res://addons/yetanotherplugins/assets/windowMode.png"
+dest_files=["res://.godot/imported/windowMode.png-be5f36f42cda6b4cea9c2c303730f725.ctex"]
 
 [params]
 

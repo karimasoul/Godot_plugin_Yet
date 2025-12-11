@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5mn6h4eolpwr"
-path="res://.godot/imported/window2.png-e09a7c02592ad1898837dd732ae5e7b9.ctex"
+uid="uid://dtm127e27u2ni"
+path="res://.godot/imported/defaultBG.jpg-7bc17d32549a6ef0e7cae9d085188c09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/window2.png"
-dest_files=["res://.godot/imported/window2.png-e09a7c02592ad1898837dd732ae5e7b9.ctex"]
+source_file="res://addons/yetanotherplugins/assets/defaultBG.jpg"
+dest_files=["res://.godot/imported/defaultBG.jpg-7bc17d32549a6ef0e7cae9d085188c09.ctex"]
 
 [params]
 

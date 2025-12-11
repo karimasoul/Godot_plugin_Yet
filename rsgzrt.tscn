@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3 uid="uid://2q0rvubajhj3"]
+
+[ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_i2wak"]
+[ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://addons/yetanotherplugins/assets/defaultBG.jpg" id="2_i2wak"]
+[ext_resource type="Texture2D" uid="uid://c5mn6h4eolpwr" path="res://addons/yetanotherplugins/assets/windowMode.png" id="6_84ufp"]
+[ext_resource type="Texture2D" uid="uid://crku6ppnu0r5t" path="res://addons/yetanotherplugins/assets/triangleLeft.png" id="7_cost4"]
+[ext_resource type="Script" uid="uid://dq7owwp4wqekt" path="res://addons/yetanotherplugins/ScriptsScene/window_label_script.gd" id="8_3kyki"]
+[ext_resource type="Texture2D" uid="uid://ba3knhf5v0kam" path="res://addons/yetanotherplugins/assets/triangleRight.png" id="9_e40re"]
+[ext_resource type="Texture2D" uid="uid://cjo7l8oj1hbvb" path="res://addons/yetanotherplugins/assets/vertSync.png" id="12_3cmt2"]
+[ext_resource type="Script" uid="uid://bs86pgyg0tbbf" path="res://addons/yetanotherplugins/ScriptsScene/vert_sync_label_script.gd" id="13_rehnd"]
+
+[node name="TestUIMain" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_i2wak")
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.47058824)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_i2wak")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="OverallBox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="OptionsBox" type="VBoxContainer" parent="OverallBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="WindowBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WindowButton" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("6_84ufp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WindowLabel" type="Label" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Window :"
+vertical_alignment = 1
+
+[node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("7_cost4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WindowLabel2" type="Label" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "windowed"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_3kyki")
+
+[node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/WindowBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("9_e40re")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/WindowBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VerticalSyncBox" type="HBoxContainer" parent="OverallBox/OptionsBox"]
+layout_mode = 2
+
+[node name="LeftFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VertSyncButton" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("12_3cmt2")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VertSyncLabel" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Vertical Sync :"
+vertical_alignment = 1
+
+[node name="Left" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("7_cost4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="VertSyncLabel2" type="Label" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "on"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_rehnd")
+
+[node name="Right" type="TextureButton" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture_normal = ExtResource("9_e40re")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RightFill" type="Control" parent="OverallBox/OptionsBox/VerticalSyncBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="OverallBox/OptionsBox/WindowBox/Left" to="OverallBox/OptionsBox/WindowBox/WindowLabel2" method="_on_left_pressed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/WindowBox/Right" to="OverallBox/OptionsBox/WindowBox/WindowLabel2" method="_on_right_pressed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/VerticalSyncBox/Left" to="OverallBox/OptionsBox/VerticalSyncBox/VertSyncLabel2" method="_on_left_pressed"]
+[connection signal="pressed" from="OverallBox/OptionsBox/VerticalSyncBox/Right" to="OverallBox/OptionsBox/VerticalSyncBox/VertSyncLabel2" method="_on_right_pressed"]

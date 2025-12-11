@@ -39,12 +39,14 @@ func _on_right_pressed() -> void:
 #func pressRight() -> void:
 #	id = (id + 1) % 3
 
-#will only work if not in !! embedded mode !!
-#test out of editor
+# This will only work if not in !! embedded mode !!
+# Please, test out of editor
+# if not in canvas-item or viewportt,
+# the scene may not properly show fullscreen
 func changeMode() -> void:
 	match (id):
 		0 :
-			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
+			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
 			text = "windowed"
 		1 :
 			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
