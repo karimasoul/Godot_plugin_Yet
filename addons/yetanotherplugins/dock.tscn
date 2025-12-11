@@ -39,11 +39,19 @@ text = "Vertical sync
 [node name="RightColumn" type="VBoxContainer" parent="globalLayout/options"]
 layout_mode = 2
 
-[node name="title" type="CheckBox" parent="globalLayout/options/RightColumn"]
+[node name="TitleBox" type="HBoxContainer" parent="globalLayout/options/RightColumn"]
+layout_mode = 2
+
+[node name="title" type="CheckBox" parent="globalLayout/options/RightColumn/TitleBox"]
 layout_mode = 2
 button_pressed = true
-text = "Title
-"
+text = "Title :"
+
+[node name="titleText" type="LineEdit" parent="globalLayout/options/RightColumn/TitleBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pause"
+emoji_menu_enabled = false
 
 [node name="mainbtn" type="CheckBox" parent="globalLayout/options/RightColumn"]
 layout_mode = 2

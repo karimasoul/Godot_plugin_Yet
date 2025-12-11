@@ -1,8 +1,10 @@
 @tool
 extends EditorPlugin
+## Retrieves the doc option chose by the user
 
 var dock_instance: Control
 var btn_generate: Button
+
 @onready var hide_volume: CheckBox
 @onready var hide_window: CheckBox
 @onready var hide_resolution: CheckBox
@@ -12,6 +14,7 @@ var btn_generate: Button
 @onready var hide_bmain: CheckBox
 @onready var hide_bresume: CheckBox
 @onready var hide_exit: CheckBox
+
 
 func _enter_tree():
 	var dock_scene = preload("res://addons/yetanotherplugins/dock.tscn")
@@ -25,22 +28,19 @@ func _enter_tree():
 	hide_resolution = dock_instance.get_node("globalLayout/options/LeftColumn/resolution")
 	hide_vertical = dock_instance.get_node("globalLayout/options/LeftColumn/vertsync")
 	
-	hide_title = dock_instance.get_node("globalLayout/options/RightColumn/title")
+	hide_title = dock_instance.get_node("globalLayout/options/RightColumn/TitleBox/title")
 	hide_bmain = dock_instance.get_node("globalLayout/options/RightColumn/mainbtn")
 	hide_bresume = dock_instance.get_node("globalLayout/options/RightColumn/resumebtn")
 	hide_exit = dock_instance.get_node("globalLayout/options/RightColumn/exitbtn")
 	
 	
 	btn_generate = Button.new()
-	btn_generate.text="Generate Menu"
-	btn_generate.size=Vector2(129.0,31.0)
-	btn_generate.position=Vector2(0.0,175.0)
+	btn_generate.text = "Generate Menu"
+	btn_generate.size = Vector2(129.0, 31.0)
+	btn_generate.position = Vector2(0.0, 175.0)
 	dock_instance.get_node("globalLayout/generateLine").add_child(btn_generate)
 	dock_instance.get_node("globalLayout/generateLine").move_child(btn_generate, 1)
-	btn_generate.pressed.connect(Callable(self,"_on_generate_main_menu"))
-
-
-	# Connexion du signal
+	btn_generate.pressed.connect(Callable(self, "_on_generate_main_menu"))
 
 
 func _exit_tree():
@@ -58,10 +58,13 @@ func _on_generate_main_menu() -> void:
 		var generator = generator_script.new()
 		add_child(generator)  
 		var scene_name = dock_instance.get_node("globalLayout/SceneTitle").text
-		generator.generate_main_menu(hide_volume.button_pressed, hide_window.button_pressed, 
-		hide_resolution.button_pressed, hide_vertical.button_pressed, hide_title.button_pressed, 
-		hide_bmain.button_pressed, hide_bresume.button_pressed, hide_exit.button_pressed,
-		scene_name )
+		var title_name = dock_instance.get_node(
+				"globalLayout/options/RightColumn/TitleBox/titleText").text
+		generator.generate_main_menu(hide_volume.button_pressed, 
+				hide_window.button_pressed, hide_resolution.button_pressed, 
+				hide_vertical.button_pressed, hide_title.button_pressed, 
+				hide_bmain.button_pressed, hide_bresume.button_pressed, 
+				hide_exit.button_pressed, scene_name , title_name)
 		generator.queue_free() 
 	else:
-		push_error("Erreur chargement script générateur")
+		push_error("Error while loading the generator script.")

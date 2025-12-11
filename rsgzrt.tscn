@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://2q0rvubajhj3"]
 
-[ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/MenuPause.gd" id="1_i2wak"]
+[ext_resource type="Script" uid="uid://cvj0vyypi1wp1" path="res://addons/yetanotherplugins/ScriptsScene/menu_pause.gd" id="1_i2wak"]
 [ext_resource type="Texture2D" uid="uid://dtm127e27u2ni" path="res://addons/yetanotherplugins/assets/defaultBG.jpg" id="2_i2wak"]
 [ext_resource type="Texture2D" uid="uid://c5mn6h4eolpwr" path="res://addons/yetanotherplugins/assets/windowMode.png" id="6_84ufp"]
 [ext_resource type="Texture2D" uid="uid://crku6ppnu0r5t" path="res://addons/yetanotherplugins/assets/triangleLeft.png" id="7_cost4"]
