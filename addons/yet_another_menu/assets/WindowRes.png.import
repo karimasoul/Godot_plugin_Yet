@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://n4ffjnrpumt6"
-path="res://.godot/imported/WindowRes.png-c1c552012d7b2e7484f029bfaa4a69ac.ctex"
+path="res://.godot/imported/WindowRes.png-1daeba87c262b6b3fa125ba7934be662.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/yetanotherplugins/assets/WindowRes.png"
-dest_files=["res://.godot/imported/WindowRes.png-c1c552012d7b2e7484f029bfaa4a69ac.ctex"]
+source_file="res://addons/yet_another_menu/assets/WindowRes.png"
+dest_files=["res://.godot/imported/WindowRes.png-1daeba87c262b6b3fa125ba7934be662.ctex"]
 
 [params]
 

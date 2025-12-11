@@ -17,7 +17,7 @@ var btn_generate: Button
 
 
 func _enter_tree():
-	var dock_scene = preload("res://addons/yetanotherplugins/dock.tscn")
+	var dock_scene = preload("res://addons/yet_another_menu/dock.tscn")
 	dock_instance = dock_scene.instantiate()
 	dock_instance.name = "Pause menu generator"
 
@@ -52,7 +52,7 @@ func _exit_tree():
 
 
 func _on_generate_main_menu() -> void:
-	var generator_script = load("res://addons/yetanotherplugins/generator.gd")
+	var generator_script = load("res://addons/yet_another_menu/generator.gd")
 	
 	if generator_script:
 		var generator = generator_script.new()

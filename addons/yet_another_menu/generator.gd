@@ -1,6 +1,7 @@
 @tool
 extends Node
 ## Generate the pause menu with only the options asked by the user
+## The pause menu is made to fit the size of the viewport in your parameters
 
 
 func generate_main_menu(is_visible_volume: bool = true, 
@@ -8,554 +9,557 @@ func generate_main_menu(is_visible_volume: bool = true,
 		is_visible_vertical: bool = true, is_visible_title: bool = true, 
 		is_visible_bmain: bool = true, is_visible_bresume: bool = true, 
 		is_visible_exit: bool = true, scene_name: String = "", title_name: String = ""):
-	var menu = Control.new()
+			
+	var width_ref = ProjectSettings.get_setting("display/window/size/viewport_width")
+	var menu = CanvasLayer.new()
 	menu.name = "TestUIMain"
-	menu.size = Vector2(1152.0, 648.0)
-	menu.set_script(load("res://addons/yetanotherplugins/ScriptsScene/menu_pause.gd"))
+	menu.set_script(load("res://addons/yet_another_menu/ScriptsScene/menu_pause.gd"))
 
 # background
-	var fond = TextureRect.new()
-	fond.name = "BG"
-	fond.texture = load("res://addons/yetanotherplugins/assets/defaultBG.jpg")
-	fond.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	fond.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	var background = TextureRect.new()
+	background.name = "BG"
+	background.texture = load("res://addons/yet_another_menu/assets/defaultBG.jpg")
+	background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	background.stretch_mode = TextureRect.STRETCH_SCALE
+	background.set_anchors_preset(Control.PRESET_FULL_RECT)
 
-	fond.size = Vector2(1152.0, 648.0)
-	fond.modulate = "#ffffff78"
-	menu.add_child(fond)
-	fond.owner = menu  
+	menu.add_child(background)
+	background.owner = menu  
 
 # hbox that holds everything
-	var OverallBox = HBoxContainer.new()
-	OverallBox.name = "OverallBox"
-	OverallBox.size = Vector2(1152.0, 648.0)
-	menu.add_child(OverallBox)
-	OverallBox.owner = menu
+	var overall_box = HBoxContainer.new()
+	overall_box.name = "OverallBox"
+	overall_box.set_anchors_preset(Control.PRESET_FULL_RECT)
+	menu.add_child(overall_box)
+	overall_box.owner = menu
 
 # Hbox content
 	if is_visible_exit :
-		var UnpauseBtn = TextureButton.new()
-		UnpauseBtn.name = "UnpauseBtn"
+		var unpause_btn = TextureButton.new()
+		unpause_btn.name = "UnpauseBtn"
 		
-		UnpauseBtn.ignore_texture_size = true
-		UnpauseBtn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		UnpauseBtn.texture_normal = load("res://addons/yetanotherplugins/assets/cross.png")
-		UnpauseBtn.custom_minimum_size =  Vector2(50.0, 50.0)
-		UnpauseBtn.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-		OverallBox.add_child(UnpauseBtn)
-		UnpauseBtn.owner = menu
-		UnpauseBtn.pressed.connect(
+		unpause_btn.ignore_texture_size = true
+		unpause_btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		unpause_btn.texture_normal = load("res://addons/yet_another_menu/assets/cross.png")
+		unpause_btn.custom_minimum_size = Vector2(0.045 * width_ref, 0.045 * width_ref)
+		unpause_btn.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		overall_box.add_child(unpause_btn)
+		unpause_btn.owner = menu
+		unpause_btn.pressed.connect(
 				Callable(menu, "_on_unpause_btn_pressed"), 
 				Object.CONNECT_PERSIST)
 
 # Vbox 
-	var OptionsBox = VBoxContainer.new()
-	OptionsBox.name = "OptionsBox"
+	var options_box = VBoxContainer.new()
+	options_box.name = "OptionsBox"
 	
-	OptionsBox.alignment = BoxContainer.ALIGNMENT_CENTER
-	OptionsBox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	OverallBox.add_child(OptionsBox)
-	OptionsBox.owner = menu
+	options_box.alignment = BoxContainer.ALIGNMENT_CENTER
+	options_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	overall_box.add_child(options_box)
+	options_box.owner = menu
 
-# TitleBox
+# title_box
 	if is_visible_title :
-		var TitleBox = VBoxContainer.new()
-		TitleBox.name = "TitleBox"
-		OptionsBox.add_child(TitleBox)
-		TitleBox.owner = menu
+		var title_box = VBoxContainer.new()
+		title_box.name = "TitleBox"
+		options_box.add_child(title_box)
+		title_box.owner = menu
 		
-		# Childs of Titlebox
-		var TitleUnderBox1 = HBoxContainer.new()
-		TitleUnderBox1.name = "TitleUnderBox"
-		TitleBox.add_child(TitleUnderBox1)
-		TitleUnderBox1.owner = menu
+		# Childs of title_box
+		var title_under_box = HBoxContainer.new()
+		title_under_box.name = "TitleUnderBox"
+		title_box.add_child(title_under_box)
+		title_under_box.owner = menu
 		# Childs of titleunderbox
-		var LeftFill1 = Control.new()
-		LeftFill1.name = "LeftFill"
+		var left_fill_title = Control.new()
+		left_fill_title.name = "LeftFill"
 		
-		LeftFill1.size_flags_horizontal = Control.SIZE_EXPAND_FILL  
+		left_fill_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL  
 		
-		TitleUnderBox1.add_child(LeftFill1)
-		LeftFill1.owner = menu
+		title_under_box.add_child(left_fill_title)
+		left_fill_title.owner = menu
 		
-		var Label1 = Label.new()
-		Label1.name = "Label"
+		var label_title = Label.new()
+		label_title.name = "Label"
 		
 		if title_name == "" :
 			title_name = "Title"
-		Label1.text = title_name
-		Label1.add_theme_font_size_override("font_size", 50)
+		label_title.text = title_name
+		label_title.add_theme_font_size_override("font_size", 0.045 * width_ref)
 		
-		TitleUnderBox1.add_child(Label1)
-		Label1.owner = menu
+		title_under_box.add_child(label_title)
+		label_title.owner = menu
 		
-		var RightFill1 = Control.new()
-		RightFill1.name = "RightFill"
+		var right_fill_title = Control.new()
+		right_fill_title.name = "RightFill"
 		
-		RightFill1.size_flags_horizontal = Control.SIZE_EXPAND_FILL 
+		right_fill_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL 
 		
-		TitleUnderBox1.add_child(RightFill1)
-		RightFill1.owner = menu
+		title_under_box.add_child(right_fill_title)
+		right_fill_title.owner = menu
 		
-		var Filler = Control.new()
-		Filler.name = "Filler"
+		var filler = Control.new()
+		filler.name = "Filler"
 		
-		Filler.custom_minimum_size = Vector2(0.0, 50.0)
+		filler.custom_minimum_size = Vector2(0.0, 0.015 * width_ref)
 		
-		TitleBox.add_child(Filler)
-		Filler.owner = menu
+		title_box.add_child(filler)
+		filler.owner = menu
 
-# VolumeBox
+# volume_box
 	if is_visible_volume :
-		var VolumeBox = HBoxContainer.new()
-		VolumeBox.name = "VolumeBox"
+		var volume_box = HBoxContainer.new()
+		volume_box.name = "VolumeBox"
 
-		OptionsBox.add_child(VolumeBox)
-		VolumeBox.owner = menu
+		options_box.add_child(volume_box)
+		volume_box.owner = menu
 		
-		# Childs de volumebox
-		var LeftFill2 = Control.new()
-		LeftFill2.name = "LeftFill"
+		# Childs de volume_box
+		var left_fill_volume = Control.new()
+		left_fill_volume.name = "LeftFill"
 		
-		LeftFill2.size_flags_horizontal = Control.SIZE_EXPAND_FILL 
+		left_fill_volume.size_flags_horizontal = Control.SIZE_EXPAND_FILL 
 		
-		VolumeBox.add_child(LeftFill2)
-		LeftFill2.owner = menu
+		volume_box.add_child(left_fill_volume)
+		left_fill_volume.owner = menu
 		
-		var SoundButton2 = TextureButton.new()
-		SoundButton2.name = "SoundButton"
+		var sound_btn = TextureButton.new()
+		sound_btn.name = "SoundButton"
 		
-		SoundButton2.ignore_texture_size = true
-		SoundButton2.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		SoundButton2.texture_normal = load("res://addons/yetanotherplugins/assets/SoundOn.png")
-		SoundButton2.texture_pressed = load("res://addons/yetanotherplugins/assets/SoundOff.png")
-		SoundButton2.toggle_mode = true
-		SoundButton2.custom_minimum_size = Vector2(50.0, 50.0)
+		sound_btn.ignore_texture_size = true
+		sound_btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		sound_btn.texture_normal = load("res://addons/yet_another_menu/assets/SoundOn.png")
+		sound_btn.texture_pressed = load("res://addons/yet_another_menu/assets/SoundOff.png")
+		sound_btn.toggle_mode = true
+		sound_btn.custom_minimum_size = Vector2(0.045 * width_ref, 0.045 * width_ref)
 		
-		VolumeBox.add_child(SoundButton2)
-		SoundButton2.owner = menu
-		SoundButton2.toggled.connect(
+		volume_box.add_child(sound_btn)
+		sound_btn.owner = menu
+		sound_btn.toggled.connect(
 				Callable(menu, "_on_sound_button_toggled"), 
 				Object.CONNECT_PERSIST)
 		
-		var VolumeLabel2 = Label.new()
-		VolumeLabel2.name = "VolumeLabel"
+		var volume_label = Label.new()
+		volume_label.name = "VolumeLabel"
 		
-		VolumeLabel2.text = "Volume :"
-		VolumeLabel2.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		VolumeLabel2.custom_minimum_size = Vector2(200.0, 0.0)
-		VolumeLabel2.add_theme_color_override("font_color", Color("#000000"))
-		VolumeLabel2.add_theme_font_size_override("font_size", 30)
+		volume_label.text = "Volume :"
+		volume_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		volume_label.custom_minimum_size = Vector2(0.2 * width_ref, 0.0)
+		volume_label.add_theme_color_override("font_color", Color("#000000"))
+		volume_label.add_theme_font_size_override("font_size", 0.03 * width_ref)
 		
-		VolumeBox.add_child(VolumeLabel2)
-		VolumeLabel2.owner = menu
+		volume_box.add_child(volume_label)
+		volume_label.owner = menu
 		
-		var SoundSlider2 = HSlider.new()
-		SoundSlider2.name = "SoundSlider"
+		var sound_slider = HSlider.new()
+		sound_slider.name = "SoundSlider"
 		
-		SoundSlider2.step = 10.0
-		SoundSlider2.value = 100.0
-		SoundSlider2.custom_minimum_size = Vector2(400.0, 40.0)
-		SoundSlider2.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		sound_slider.step = 10.0
+		sound_slider.value = 100.0
+		sound_slider.custom_minimum_size = Vector2(0.36 * width_ref, 0.03 * width_ref)
+		sound_slider.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		
-		VolumeBox.add_child( SoundSlider2)
-		SoundSlider2.owner = menu
-		SoundSlider2.value_changed.connect(
+		volume_box.add_child(sound_slider)
+		sound_slider.owner = menu
+		sound_slider.value_changed.connect(
 				Callable(menu, "_on_sound_slider_value_changed"), 
 				Object.CONNECT_PERSIST)
 		
-		var RightFill2 = Control.new()
-		RightFill2.name = "RightFill"
+		var right_fill_volume = Control.new()
+		right_fill_volume.name = "RightFill"
 		
-		RightFill2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		right_fill_volume.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		VolumeBox.add_child(RightFill2)
-		RightFill2.owner = menu
+		volume_box.add_child(right_fill_volume)
+		right_fill_volume.owner = menu
 
-# WindowBox
+# window_box
 	if is_visible_window :
-		var WindowBox = HBoxContainer.new()
-		WindowBox.name = "WindowBox"
+		var window_box = HBoxContainer.new()
+		window_box.name = "WindowBox"
 		
-		OptionsBox.add_child(WindowBox)
-		WindowBox.owner = menu
+		options_box.add_child(window_box)
+		window_box.owner = menu
 		
-		# Childs de windowbox
+		# Childs de window_box
 		
-		var LeftFill3 = Control.new()
-		LeftFill3.name = "LeftFill" 
+		var left_fill_window = Control.new()
+		left_fill_window.name = "LeftFill" 
 		
-		LeftFill3.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		left_fill_window.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		WindowBox.add_child(LeftFill3)
-		LeftFill3.owner = menu
+		window_box.add_child(left_fill_window)
+		left_fill_window.owner = menu
 		
-		var WindowButton3 = TextureButton.new()
-		WindowButton3.name = "WindowButton"
+		var window_btn = TextureButton.new()
+		window_btn.name = "WindowButton"
 		
-		WindowButton3.ignore_texture_size = true
-		WindowButton3.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		WindowButton3.texture_normal = load("res://addons/yetanotherplugins/assets/windowMode.png")
-		WindowButton3.custom_minimum_size = Vector2(50.0, 50.0)
+		window_btn.ignore_texture_size = true
+		window_btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		window_btn.texture_normal = load("res://addons/yet_another_menu/assets/windowMode.png")
+		window_btn.custom_minimum_size = Vector2(0.045 * width_ref, 0.045 * width_ref)
 		
-		WindowBox.add_child(WindowButton3)
-		WindowButton3.owner = menu
+		window_box.add_child(window_btn)
+		window_btn.owner = menu
 		
-		var WindowLabel3 = Label.new()
-		WindowLabel3.name = "WindowLabel"
+		var window_label = Label.new()
+		window_label.name = "WindowLabel"
 		
-		WindowLabel3.text = "Window :"
-		WindowLabel3.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		WindowLabel3.custom_minimum_size = Vector2(200.0, 0.0)
-		WindowLabel3.add_theme_color_override("font_color", Color("#000000"))
-		WindowLabel3.add_theme_font_size_override("font_size", 30)
+		window_label.text = "Window :"
+		window_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		window_label.custom_minimum_size = Vector2(0.2 * width_ref, 0.0)
+		window_label.add_theme_color_override("font_color", Color("#000000"))
+		window_label.add_theme_font_size_override("font_size", 0.03 * width_ref)
 		
-		WindowBox.add_child(WindowLabel3)
-		WindowLabel3.owner = menu
+		window_box.add_child(window_label)
+		window_label.owner = menu
 		
-		var Left3 = TextureButton.new()
-		Left3.name = "Left"
+		var left_volume = TextureButton.new()
+		left_volume.name = "Left"
 		
-		Left3.ignore_texture_size = true
-		Left3.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		Left3.texture_normal = load("res://addons/yetanotherplugins/assets/triangleLeft.png")
-		Left3.custom_minimum_size = Vector2(30.0, 30.0)
+		left_volume.ignore_texture_size = true
+		left_volume.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		left_volume.texture_normal = load("res://addons/yet_another_menu/assets/triangleLeft.png")
+		left_volume.custom_minimum_size = Vector2(0.03 * width_ref, 0.03 * width_ref)
 		
-		WindowBox.add_child(Left3)
-		Left3.owner = menu
+		window_box.add_child(left_volume)
+		left_volume.owner = menu
 		
 		
-		var WindowLabel23 = Label.new()
+		var window_label_2 = Label.new()
 		
-		Left3.pressed.connect(
-				Callable(WindowLabel23, "_on_left_pressed"), 
+		left_volume.pressed.connect(
+				Callable(window_label_2, "_on_left_pressed"), 
 				Object.CONNECT_PERSIST)
 
-		WindowLabel23.name = "WindowLabel2"
+		window_label_2.name = "WindowLabel2"
 		
-		WindowLabel23.text = "windowed"
-		WindowLabel23.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		WindowLabel23.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		WindowLabel23.custom_minimum_size = Vector2(340.0, 0.0)
-		WindowLabel23.add_theme_color_override("font_color", Color("#000000"))
-		WindowLabel23.add_theme_font_size_override("font_size", 30)
+		window_label_2.text = "windowed"
+		window_label_2.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		window_label_2.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		window_label_2.custom_minimum_size = Vector2(0.3 * width_ref, 0.0)
+		window_label_2.add_theme_color_override("font_color", Color("#000000"))
+		window_label_2.add_theme_font_size_override("font_size", 0.03 * width_ref)
 		
-		WindowBox.add_child(WindowLabel23)
-		WindowLabel23.owner = menu
-		WindowLabel23.set_script(load(
-				"res://addons/yetanotherplugins/ScriptsScene/window_label_script.gd"))
+		window_box.add_child(window_label_2)
+		window_label_2.owner = menu
+		window_label_2.set_script(load(
+				"res://addons/yet_another_menu/ScriptsScene/window_label_script.gd"))
 		
-		var Right3 = TextureButton.new()
-		Right3.name = "Right"
+		var right_volume = TextureButton.new()
+		right_volume.name = "Right"
 		
-		Right3.ignore_texture_size = true
-		Right3.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		Right3.texture_normal = load("res://addons/yetanotherplugins/assets/triangleRight.png")
-		Right3.custom_minimum_size = Vector2(30.0, 30.0)
+		right_volume.ignore_texture_size = true
+		right_volume.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		right_volume.texture_normal = load("res://addons/yet_another_menu/assets/triangleRight.png")
+		right_volume.custom_minimum_size = Vector2(0.03 * width_ref, 0.03 * width_ref)
 		
-		WindowBox.add_child(Right3)
-		Right3.owner = menu
-		Right3.pressed.connect(
-				Callable(WindowLabel23, "_on_right_pressed"), 
+		window_box.add_child(right_volume)
+		right_volume.owner = menu
+		right_volume.pressed.connect(
+				Callable(window_label_2, "_on_right_pressed"), 
 				Object.CONNECT_PERSIST)
 		
-		var RightFill3 = Control.new()
-		RightFill3.name = "RightFill"
+		var right_fill_volume = Control.new()
+		right_fill_volume.name = "RightFill"
 		
-		RightFill3.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		right_fill_volume.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		WindowBox.add_child(RightFill3)
-		RightFill3.owner = menu
+		window_box.add_child(right_fill_volume)
+		right_fill_volume.owner = menu
 
-# ResolutionBox
+# resolution_box
 	if is_visible_resolution :
-		var ResolutionBox = HBoxContainer.new()
-		ResolutionBox.name = "ResolutionBox"
+		var resolution_box = HBoxContainer.new()
+		resolution_box.name = "resolution_box"
 
-		OptionsBox.add_child(ResolutionBox)
-		ResolutionBox.owner = menu
+		options_box.add_child(resolution_box)
+		resolution_box.owner = menu
 		
-		# Childs of resolutionBox
-		var LeftFill4 = Control.new()
-		LeftFill4.name = "LeftFill"
+		# Childs of resolution_box
+		var left_fill_resolution = Control.new()
+		left_fill_resolution.name = "LeftFill"
 		
-		LeftFill4.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		left_fill_resolution.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		ResolutionBox.add_child(LeftFill4)
-		LeftFill4.owner = menu
+		resolution_box.add_child(left_fill_resolution)
+		left_fill_resolution.owner = menu
 		
-		var ResolutionButton4 = TextureButton.new()
-		ResolutionButton4.name = "ResolutionButton"
+		var resolution_btn = TextureButton.new()
+		resolution_btn.name = "ResolutionButton"
 		
-		ResolutionButton4.ignore_texture_size = true
-		ResolutionButton4.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		ResolutionButton4.texture_normal = load(
-				"res://addons/yetanotherplugins/assets/WindowRes.png")
-		ResolutionButton4.custom_minimum_size = Vector2(50.0, 50.0)
+		resolution_btn.ignore_texture_size = true
+		resolution_btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		resolution_btn.texture_normal = load(
+				"res://addons/yet_another_menu/assets/WindowRes.png")
+		resolution_btn.custom_minimum_size = Vector2(0.045 * width_ref, 0.045 * width_ref)
 		
-		ResolutionBox.add_child(ResolutionButton4)
-		ResolutionButton4.owner = menu
+		resolution_box.add_child(resolution_btn)
+		resolution_btn.owner = menu
 		
-		var ResolutionLabel4 = Label.new()
-		ResolutionLabel4.name = "ResolutionLabel"
+		var resolution_label = Label.new()
+		resolution_label.name = "ResolutionLabel"
 		
-		ResolutionLabel4.text = "Resolution :"
-		ResolutionLabel4.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		ResolutionLabel4.custom_minimum_size = Vector2(200.0, 0.0)
-		ResolutionLabel4.add_theme_color_override("font_color", Color("#000000"))
-		ResolutionLabel4.add_theme_font_size_override("font_size", 30)
+		resolution_label.text = "Resolution :"
+		resolution_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		resolution_label.custom_minimum_size = Vector2(0.2 * width_ref, 0.0)
+		resolution_label.add_theme_color_override("font_color", Color("#000000"))
+		resolution_label.add_theme_font_size_override("font_size", 0.03 * width_ref)
 		
-		ResolutionBox.add_child(ResolutionLabel4)
-		ResolutionLabel4.owner = menu
+		resolution_box.add_child(resolution_label)
+		resolution_label.owner = menu
 		
-		var Left4 = TextureButton.new()
-		Left4.name = "Left"
+		var left_resolution = TextureButton.new()
+		left_resolution.name = "Left"
 		
-		Left4.ignore_texture_size = true
-		Left4.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		Left4.texture_normal = load("res://addons/yetanotherplugins/assets/triangleLeft.png")
-		Left4.custom_minimum_size = Vector2(30.0, 30.0)
+		left_resolution.ignore_texture_size = true
+		left_resolution.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		left_resolution.texture_normal = load("res://addons/yet_another_menu/assets/triangleLeft.png")
+		left_resolution.custom_minimum_size = Vector2(0.03 * width_ref, 0.03 * width_ref)
 		
-		ResolutionBox.add_child(Left4)
-		Left4.owner = menu
+		resolution_box.add_child(left_resolution)
+		left_resolution.owner = menu
 		
-		var ResolutionLabel24 = Label.new()
+		var resolution_label_2 = Label.new()
 		
-		Left4.pressed.connect(
-				Callable(ResolutionLabel24, "_on_left_pressed"), 
+		left_resolution.pressed.connect(
+				Callable(resolution_label_2, "_on_left_pressed"), 
 				Object.CONNECT_PERSIST)
 		
-		ResolutionLabel24.name = "ResolutionLabel2"
+		resolution_label_2.name = "ResolutionLabel2"
 		
-		ResolutionLabel24.text = "1920x1080"
-		ResolutionLabel24.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		ResolutionLabel24.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		ResolutionLabel24.custom_minimum_size = Vector2(340.0, 0.0)
-		ResolutionLabel24.add_theme_color_override("font_color", Color("#000000"))
-		ResolutionLabel24.add_theme_font_size_override("font_size", 30)
+		resolution_label_2.text = "1920x1080"
+		resolution_label_2.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		resolution_label_2.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		resolution_label_2.custom_minimum_size = Vector2(0.3 * width_ref, 0.0)
+		resolution_label_2.add_theme_color_override("font_color", Color("#000000"))
+		resolution_label_2.add_theme_font_size_override("font_size", 0.03 * width_ref)
 		
-		ResolutionBox.add_child(ResolutionLabel24)
-		ResolutionLabel24.owner = menu
-		ResolutionLabel24.set_script(load(
-				"res://addons/yetanotherplugins/ScriptsScene/resolution_label_script.gd"))
+		resolution_box.add_child(resolution_label_2)
+		resolution_label_2.owner = menu
+		resolution_label_2.set_script(load(
+				"res://addons/yet_another_menu/ScriptsScene/resolution_label_script.gd"))
 		
-		var Right4 = TextureButton.new()
-		Right4.name = "Right"
+		var right_resolution = TextureButton.new()
+		right_resolution.name = "Right"
 		
-		Right4.ignore_texture_size = true
-		Right4.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		Right4.texture_normal = load("res://addons/yetanotherplugins/assets/triangleRight.png")
-		Right4.custom_minimum_size = Vector2(30.0, 30.0)
+		right_resolution.ignore_texture_size = true
+		right_resolution.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		right_resolution.texture_normal = load("res://addons/yet_another_menu/assets/triangleRight.png")
+		right_resolution.custom_minimum_size = Vector2(0.03 * width_ref, 0.03 * width_ref)
 		
-		ResolutionBox.add_child(Right4)
-		Right4.owner = menu
-		Right4.pressed.connect(
-				Callable(ResolutionLabel24, "_on_right_pressed"), 
+		resolution_box.add_child(right_resolution)
+		right_resolution.owner = menu
+		right_resolution.pressed.connect(
+				Callable(resolution_label_2, "_on_right_pressed"), 
 				Object.CONNECT_PERSIST)
 		
-		var RightFill4 = Control.new()
-		RightFill4.name = "RightFill"
+		var right_fill_resolution = Control.new()
+		right_fill_resolution.name = "RightFill"
 		
-		RightFill4.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		right_fill_resolution.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		ResolutionBox.add_child(RightFill4)
-		RightFill4.owner = menu
+		resolution_box.add_child(right_fill_resolution)
+		right_fill_resolution.owner = menu
 		
 
-# VerticalSyncBox
+# vertical_sync_box
 	if is_visible_vertical :
-		var VerticalSyncBox = HBoxContainer.new()
-		VerticalSyncBox.name = "VerticalSyncBox"
+		var vertical_sync_box = HBoxContainer.new()
+		vertical_sync_box.name = "VerticalSyncBox"
 		
-		OptionsBox.add_child(VerticalSyncBox)
-		VerticalSyncBox.owner = menu
+		options_box.add_child(vertical_sync_box)
+		vertical_sync_box.owner = menu
 		
-		# Childs of verticalSyncBox
+		# Childs of vertical_sync_box
 		
-		var LeftFill5 = Control.new()
-		LeftFill5.name = "LeftFill"
+		var left_fill_vert_sync = Control.new()
+		left_fill_vert_sync.name = "LeftFill"
 		
-		LeftFill5.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		left_fill_vert_sync.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		VerticalSyncBox.add_child(LeftFill5)
-		LeftFill5.owner = menu
+		vertical_sync_box.add_child(left_fill_vert_sync)
+		left_fill_vert_sync.owner = menu
 		
-		var VetSyncButton5 = TextureButton.new()
-		VetSyncButton5.name = "VertSyncButton"
+		var vertical_sync_btn = TextureButton.new()
+		vertical_sync_btn.name = "VertSyncButton"
 		
-		VetSyncButton5.ignore_texture_size = true
-		VetSyncButton5.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		VetSyncButton5.texture_normal = load("res://addons/yetanotherplugins/assets/vertSync.png")
-		VetSyncButton5.custom_minimum_size = Vector2(50.0, 50.0)
+		vertical_sync_btn.ignore_texture_size = true
+		vertical_sync_btn.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		vertical_sync_btn.texture_normal = load("res://addons/yet_another_menu/assets/vertSync.png")
+		vertical_sync_btn.custom_minimum_size = Vector2(0.045 * width_ref, 0.045 * width_ref)
 		
-		VerticalSyncBox.add_child(VetSyncButton5)
-		VetSyncButton5.owner = menu
+		vertical_sync_box.add_child(vertical_sync_btn)
+		vertical_sync_btn.owner = menu
 		
-		var VetSyncLabel5 = Label.new()
-		VetSyncLabel5.name = "VertSyncLabel"
+		var vertical_sync_label = Label.new()
+		vertical_sync_label.name = "VertSyncLabel"
 		
-		VetSyncLabel5.text = "Vertical Sync :"
-		VetSyncLabel5.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		VetSyncLabel5.custom_minimum_size = Vector2(200.0, 0.0)
-		VetSyncLabel5.add_theme_color_override("font_color", Color("#000000"))
-		VetSyncLabel5.add_theme_font_size_override("font_size", 30)
+		vertical_sync_label.text = "Vertical Sync :"
+		vertical_sync_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		vertical_sync_label.custom_minimum_size = Vector2(0.2 * width_ref, 0.0)
+		vertical_sync_label.add_theme_color_override("font_color", Color("#000000"))
+		vertical_sync_label.add_theme_font_size_override("font_size", 0.03 * width_ref)
 		
-		VerticalSyncBox.add_child(VetSyncLabel5)
-		VetSyncLabel5.owner = menu
+		vertical_sync_box.add_child(vertical_sync_label)
+		vertical_sync_label.owner = menu
 		
-		var Left5 = TextureButton.new()
-		Left5.name = "Left"
+		var left_vertical_sync = TextureButton.new()
+		left_vertical_sync.name = "Left"
 		
-		Left5.ignore_texture_size = true
-		Left5.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		Left5.texture_normal = load("res://addons/yetanotherplugins/assets/triangleLeft.png")
-		Left5.custom_minimum_size = Vector2(30.0, 30.0)
+		left_vertical_sync.ignore_texture_size = true
+		left_vertical_sync.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		left_vertical_sync.texture_normal = load("res://addons/yet_another_menu/assets/triangleLeft.png")
+		left_vertical_sync.custom_minimum_size = Vector2(0.03 * width_ref, 0.03 * width_ref)
 		
-		VerticalSyncBox.add_child(Left5)
-		Left5.owner = menu
+		vertical_sync_box.add_child(left_vertical_sync)
+		left_vertical_sync.owner = menu
 		
-		var VetSyncLabel25 = Label.new()
+		var vertical_sync_label_2 = Label.new()
 		
-		Left5.pressed.connect(
-				Callable(VetSyncLabel25, "_on_left_pressed"), 
+		left_vertical_sync.pressed.connect(
+				Callable(vertical_sync_label_2, "_on_left_pressed"), 
 				Object.CONNECT_PERSIST)
 		
-		VetSyncLabel25.name = "VertSyncLabel2"
+		vertical_sync_label_2.name = "VertSyncLabel2"
 		
-		VetSyncLabel25.text = "on"
-		VetSyncLabel25.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		VetSyncLabel25.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		VetSyncLabel25.custom_minimum_size = Vector2(340.0, 0.0)
-		VetSyncLabel25.add_theme_color_override("font_color", Color("#000000"))
-		VetSyncLabel25.add_theme_font_size_override("font_size", 30)
+		vertical_sync_label_2.text = "on"
+		vertical_sync_label_2.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vertical_sync_label_2.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		vertical_sync_label_2.custom_minimum_size = Vector2(0.3 * width_ref, 0.0)
+		vertical_sync_label_2.add_theme_color_override("font_color", Color("#000000"))
+		vertical_sync_label_2.add_theme_font_size_override("font_size", 0.03 * width_ref)
 		
-		VerticalSyncBox.add_child(VetSyncLabel25)
-		VetSyncLabel25.owner = menu
-		VetSyncLabel25.set_script(load(
-				"res://addons/yetanotherplugins/ScriptsScene/vert_sync_label_script.gd"))
+		vertical_sync_box.add_child(vertical_sync_label_2)
+		vertical_sync_label_2.owner = menu
+		vertical_sync_label_2.set_script(load(
+				"res://addons/yet_another_menu/ScriptsScene/vert_sync_label_script.gd"))
 		
-		var Right5 = TextureButton.new()
-		Right5.name = "Right"
+		var right_vertical_sync = TextureButton.new()
+		right_vertical_sync.name = "Right"
 		
-		Right5.ignore_texture_size = true
-		Right5.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		Right5.texture_normal = load("res://addons/yetanotherplugins/assets/triangleRight.png")
-		Right5.custom_minimum_size = Vector2(30.0, 30.0)
+		right_vertical_sync.ignore_texture_size = true
+		right_vertical_sync.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+		right_vertical_sync.texture_normal = load("res://addons/yet_another_menu/assets/triangleRight.png")
+		right_vertical_sync.custom_minimum_size = Vector2(0.03 * width_ref, 0.03 * width_ref)
 		
-		VerticalSyncBox.add_child(Right5)
-		Right5.owner = menu
-		Right5.pressed.connect(
-				Callable(VetSyncLabel25, "_on_right_pressed"), 
+		vertical_sync_box.add_child(right_vertical_sync)
+		right_vertical_sync.owner = menu
+		right_vertical_sync.pressed.connect(
+				Callable(vertical_sync_label_2, "_on_right_pressed"), 
 				Object.CONNECT_PERSIST)
 		
-		var RightFill5 = Control.new()
-		RightFill5.name = "RightFill"
+		var right_fill_vertical_sync = Control.new()
+		right_fill_vertical_sync.name = "RightFill"
 		
-		RightFill5.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		right_fill_vertical_sync.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		VerticalSyncBox.add_child(RightFill5)
-		RightFill5.owner = menu
+		vertical_sync_box.add_child(right_fill_vertical_sync)
+		right_fill_vertical_sync.owner = menu
 
-# BackToMenuBox
+# back_to_menu_box
 	if is_visible_bmain :
-		var BackToMenuBox = VBoxContainer.new()
-		BackToMenuBox.name = "BackToMenuBox"
+		var back_to_menu_box = VBoxContainer.new()
+		back_to_menu_box.name = "BackToMenuBox"
 		
-		OptionsBox.add_child(BackToMenuBox)
-		BackToMenuBox.owner = menu
+		options_box.add_child(back_to_menu_box)
+		back_to_menu_box.owner = menu
 		
-		# Childs of backtomenubox
+		# Childs of back_to_menu_box
 		
-		var Filler6 = Control.new()
-		Filler6.name = "Filler"
+		var filler_back_to_menu = Control.new()
+		filler_back_to_menu.name = "filler"
 		
-		Filler6.custom_minimum_size = Vector2(0.0, 30.0)
+		filler_back_to_menu.custom_minimum_size = Vector2(0.0, 0.015 * width_ref)
 		
-		BackToMenuBox.add_child( Filler6)
-		Filler6.owner = menu
+		back_to_menu_box.add_child(filler_back_to_menu)
+		filler_back_to_menu.owner = menu
 		
-		var BackMenuUnderBox6 = HBoxContainer.new()
-		BackMenuUnderBox6.name = "BackMenuUnderBox"
-		BackToMenuBox.add_child(BackMenuUnderBox6)
-		BackMenuUnderBox6.owner = menu
+		var back_menu_under_box = HBoxContainer.new()
+		back_menu_under_box.name = "BackMenuUnderBox"
+		back_to_menu_box.add_child(back_menu_under_box)
+		back_menu_under_box.owner = menu
 		
-		 # Childs of backmenuunderbox6
 		
-		var LeftFill6 = Control.new()
-		LeftFill6.name = "LeftFill"
+		 # Childs of back_menu_under_box
 		
-		LeftFill6.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var left_fill_back_to_menu = Control.new()
+		left_fill_back_to_menu.name = "LeftFill"
 		
-		BackMenuUnderBox6.add_child(LeftFill6)
-		LeftFill6.owner = menu
+		left_fill_back_to_menu.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		var Button6 = Button.new()
-		Button6.name = "Button"
+		back_menu_under_box.add_child(left_fill_back_to_menu)
+		left_fill_back_to_menu.owner = menu
 		
-		Button6.text = "Main menu"
+		var back_to_menu_btn = Button.new()
+		back_to_menu_btn.name = "Button"
 		
-		BackMenuUnderBox6.add_child(Button6)
-		Button6.owner = menu
-		Button6.pressed.connect(
+		back_to_menu_btn.text = "Main menu"
+		
+		back_menu_under_box.add_child(back_to_menu_btn)
+		back_to_menu_btn.owner = menu
+		back_to_menu_btn.pressed.connect(
 				Callable(menu, "_load_scene"), 
 				Object.CONNECT_PERSIST)
+		back_to_menu_btn.add_theme_font_size_override("font_size", 0.02 * width_ref)
 		
-		var RightFill6 = Control.new()
-		RightFill6.name = "RightFill"
+		var right_fill_back_to_menu = Control.new()
+		right_fill_back_to_menu.name = "RightFill"
 		
-		RightFill6.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		right_fill_back_to_menu.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		BackMenuUnderBox6.add_child(RightFill6)
-		RightFill6.owner = menu
+		back_menu_under_box.add_child(right_fill_back_to_menu)
+		right_fill_back_to_menu.owner = menu
 
-# ResumeBox
+# resume_box
 	if is_visible_bresume :
-		var ResumeBox = VBoxContainer.new()
-		ResumeBox.name = "ResumeBox"
-		OptionsBox.add_child(ResumeBox)
-		ResumeBox.owner = menu
+		var resume_box = VBoxContainer.new()
+		resume_box.name = "ResumeBox"
+		options_box.add_child(resume_box)
+		resume_box.owner = menu
 		
-		# Childs of Resumebox
+		# Childs of resume_box
 		
-		var Filler7 = Control.new()
-		Filler7.name = "Filler"
+		var filler_resume = Control.new()
+		filler_resume.name = "filler"
 		
-		Filler7.custom_minimum_size = Vector2(0.0, 30.0)
+		filler_resume.custom_minimum_size = Vector2(0.0, 0.015 * width_ref)
 		
-		ResumeBox.add_child(Filler7)
-		Filler7.owner = menu
+		resume_box.add_child(filler_resume)
+		filler_resume.owner = menu
 		
-		var ResumeUnderBox = HBoxContainer.new()
-		ResumeUnderBox.name = "ResumeUnderBox"
-		ResumeBox.add_child(ResumeUnderBox)
-		ResumeUnderBox.owner = menu
+		var resume_under_box = HBoxContainer.new()
+		resume_under_box.name = "ResumeUnderBox"
+		resume_box.add_child(resume_under_box)
+		resume_under_box.owner = menu
 		
-		# Child of resumeunderbox
-		var LeftFill7 = Control.new()
-		LeftFill7.name = "LeftFill"
+		# Child of resume_under_box
+		var left_fill_resume = Control.new()
+		left_fill_resume.name = "LeftFill"
 		
-		LeftFill7.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		left_fill_resume.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		ResumeUnderBox.add_child(LeftFill7)
-		LeftFill7.owner = menu
+		resume_under_box.add_child(left_fill_resume)
+		left_fill_resume.owner = menu
 		
-		var Button7 = Button.new()
-		Button7.name = "Button"
+		var resume_btn = Button.new()
+		resume_btn.name = "Button"
 		
-		Button7.text = "Resume"
+		resume_btn.text = "Resume"
 		
-		ResumeUnderBox.add_child(Button7)
-		Button7.owner = menu
-		Button7.pressed.connect(
+		resume_under_box.add_child(resume_btn)
+		resume_btn.owner = menu
+		resume_btn.pressed.connect(
 				Callable(menu, "_on_unpause_btn_pressed"), 
 				Object.CONNECT_PERSIST)
+		resume_btn.add_theme_font_size_override("font_size", 0.02 * width_ref)
 		
-		var RightFill7 = Control.new()
-		RightFill7.name = "RightFill"
-		RightFill7.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var right_fill_resume = Control.new()
+		right_fill_resume.name = "RightFill"
+		right_fill_resume.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
-		ResumeUnderBox.add_child(RightFill7)
-		RightFill7.owner = menu
+		resume_under_box.add_child(right_fill_resume)
+		right_fill_resume.owner = menu
 
 	var scene = PackedScene.new()
 	scene.pack(menu)

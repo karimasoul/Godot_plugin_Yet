@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 ## Other functions for various signals
 
 @export var MainMenu : PackedScene

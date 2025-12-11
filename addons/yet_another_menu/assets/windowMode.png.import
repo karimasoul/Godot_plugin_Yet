@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5mn6h4eolpwr"
-path="res://.godot/imported/windowMode.png-be5f36f42cda6b4cea9c2c303730f725.ctex"
+path="res://.godot/imported/windowMode.png-57daa98ac5d71aa12cc531e077b683a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/yetanotherplugins/assets/windowMode.png"
-dest_files=["res://.godot/imported/windowMode.png-be5f36f42cda6b4cea9c2c303730f725.ctex"]
+source_file="res://addons/yet_another_menu/assets/windowMode.png"
+dest_files=["res://.godot/imported/windowMode.png-57daa98ac5d71aa12cc531e077b683a1.ctex"]
 
 [params]
 

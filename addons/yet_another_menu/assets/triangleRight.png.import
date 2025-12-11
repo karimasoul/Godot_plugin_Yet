@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ba3knhf5v0kam"
-path="res://.godot/imported/triangleRight.png-30da5edf17aafa8a508aa27c1d57f671.ctex"
+path="res://.godot/imported/triangleRight.png-85be68712aa18de2a7d6742212372c84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/yetanotherplugins/assets/triangleRight.png"
-dest_files=["res://.godot/imported/triangleRight.png-30da5edf17aafa8a508aa27c1d57f671.ctex"]
+source_file="res://addons/yet_another_menu/assets/triangleRight.png"
+dest_files=["res://.godot/imported/triangleRight.png-85be68712aa18de2a7d6742212372c84.ctex"]
 
 [params]
 

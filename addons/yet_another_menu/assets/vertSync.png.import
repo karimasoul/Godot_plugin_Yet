@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjo7l8oj1hbvb"
-path="res://.godot/imported/vertSync.png-92a8fa04ea3718f8a44b8f896217e1dd.ctex"
+path="res://.godot/imported/vertSync.png-9b857ef3f0e29509c20f0ffcdc6e7668.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/yetanotherplugins/assets/vertSync.png"
-dest_files=["res://.godot/imported/vertSync.png-92a8fa04ea3718f8a44b8f896217e1dd.ctex"]
+source_file="res://addons/yet_another_menu/assets/vertSync.png"
+dest_files=["res://.godot/imported/vertSync.png-9b857ef3f0e29509c20f0ffcdc6e7668.ctex"]
 
 [params]
 

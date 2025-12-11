@@ -21,4 +21,4 @@ mouse_cursor/main_scene="uid://lesnexvedow7"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/yetanotherplugins/plugin.cfg")
+enabled=PackedStringArray("res://addons/yet_another_menu/plugin.cfg")
