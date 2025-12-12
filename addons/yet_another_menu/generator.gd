@@ -565,7 +565,7 @@ func generate_main_menu(is_visible_volume: bool = true,
 	scene.pack(menu)
 	# Allows the user to create multiple pause menu
 	if scene_name ==  "" :
-		scene_name = "menu"
+		scene_name = "pause_menu"
 	var path = "res://" + scene_name + ".tscn"
 	var err = ResourceSaver.save(scene, path)
 	if err ==  OK:
