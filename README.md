@@ -53,6 +53,6 @@ Once the plugin is activated, a dock automatically appears in the editor, at the
 <br>
 
 ## License :
-This plugin is licensed under the MIT License. See the LICENSE file for details.
+This plugin is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 
